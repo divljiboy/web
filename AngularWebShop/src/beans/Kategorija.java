@@ -18,19 +18,18 @@ public class Kategorija {
    /** @pdRoleInfo migr=no name=Kategorija assc=association3 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
    public java.util.Collection<Kategorija> kategorijaB;
    
-   /** @pdOid c07e9623-df8c-4f69-8461-2d6264a3268d */
+  
    public String getNaziv() {
       return naziv;
    }
    
-   /** @param newNaziv
-    * @pdOid 6e671af4-c5a3-4f25-8632-0c08d171131d */
+  
    public void setNaziv(String newNaziv) {
       naziv = newNaziv;
    }
    
    
-   /** @pdGenerated default getter */
+   
    public java.util.Collection<Kategorija> getKategorijaB() {
       if (kategorijaB == null)
          kategorijaB = new java.util.HashSet<Kategorija>();
@@ -63,8 +62,7 @@ public class Kategorija {
          this.kategorijaB.add(newKategorija);
    }
    
-   /** @pdGenerated default remove
-     * @param oldKategorija */
+  
    public void removeKategorijaB(Kategorija oldKategorija) {
       if (oldKategorija == null)
          return;
@@ -73,7 +71,7 @@ public class Kategorija {
             this.kategorijaB.remove(oldKategorija);
    }
    
-   /** @pdGenerated default removeAll */
+
    public void removeAllKategorijaB() {
       if (kategorijaB != null)
          kategorijaB.clear();
