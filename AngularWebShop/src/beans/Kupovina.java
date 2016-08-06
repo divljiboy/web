@@ -50,6 +50,7 @@ public class Kupovina {
       return proizvod.iterator();
    }
    
+   
    /** @pdGenerated default setter
      * @param newProizvod */
    public void setProizvod(java.util.List<Proizvod> newProizvod) {
