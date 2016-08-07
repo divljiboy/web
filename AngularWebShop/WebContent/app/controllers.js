@@ -1,4 +1,4 @@
-
+/*
 
 // controller
 webShop.controller('productsController', function($scope, productsFactory) {
@@ -43,4 +43,4 @@ webShop.controller('shoppingCartController', function($scope, shoppingCartFactor
 	    	});
 		}
     };
-});
+});*/

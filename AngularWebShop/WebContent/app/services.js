@@ -1,4 +1,4 @@
-webShop.factory('productsFactory', function($http) {
+/*webShop.factory('productsFactory', function($http) {
 	
 	var factory = {};
 	factory.getProducts = function() {
@@ -30,3 +30,4 @@ webShop.factory('shoppingCartFactory', function($http) {
 	return factory;
 	
 });
+*/
