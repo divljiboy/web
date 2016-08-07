@@ -1,36 +1,25 @@
 (function (angular) {
     'use strict';
 
-    angular.module('webShop',['ui.router']).config(['$stateProvider', function ($stateProvider) {
-    	 $urlRouterProvider.otherwise('/');   
-    	$stateProvider
-            .state('sviProizvodi',
+    angular.module('webShop').config(['$stateProvider', function ($stateProvider) {
+            $stateProvider
+            .state('bla',
                 {
-                    url: '/',
-                    views: {
-                        'content': {
-                        	templateUrl: 'partials/products.html'/*,
-                            controller: 'sveDrzaveController'*/
-                        },
+                    url: '/bla',
+                    views:
+                    {
+  
                         'navbar': {
-                            templateUrl: 'partials/navbar.html'/*,
-                            controller: 'navbarController'*/
-                        }
-                     }
-                }).state('dodajProizvod',
-            {
-                url: '/proizvod/dodaj',
-                views: {
-                    'content': {
-                    	templateUrl: '/dodajProzivod.html'/*,
-                        controller: 'sveDrzaveController'*/
-                    },
-                    'navbar': {
-                        templateUrl: 'partials/navbar.html'/*,
-                        controller: 'navbarController'*/
+                            templateUrl: 'partials/products.html'
+                         },
+                         'content':{
+                        	 
+                        	 templateUrl: 'partials/products.html'
+                         }
+            
                     }
-                 }
-            });
-        }]);
+                    
+                }
+            )
+                }]);
 })(angular);
-

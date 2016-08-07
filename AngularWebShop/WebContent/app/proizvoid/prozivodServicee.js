@@ -1,4 +1,4 @@
-(function () {
+/*(function () {
 
     angular.module('webShop')
         .service('prozivodService', ['$http', function ($http) {
@@ -35,4 +35,4 @@
 
         }]);
 
-})();
+})();*/

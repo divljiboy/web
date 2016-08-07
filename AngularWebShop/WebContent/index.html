@@ -6,18 +6,23 @@
 	<link rel="stylesheet" href="js/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 </head> 
 
-<body>
+<body ng-app="webShop" ng-controller="homeController">
 
 <h3>Primer WebShop aplikacije u Angular tehnologiji</h3>
 
-	<div ui-view></div>
+	<div ui-view="navbar"></div>
+	<div ui-view="content"></div>
 
 <script src="js/angular.js"></script>
 <script src="js/angular-route.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/toast.js"></script>
+
 <script src="app/app.js"></script>
-<script src="app/controllers.js"></script>
+<script src="app/appconfig.js"></script>
+<script src="app/proizvoid/proizvoid.js"></script>
+
+
 <script src="app/services.js"></script>
 <script src="app/directives.js"></script>
 <script src="js/bower_components/angular-ui-router/release/angular-ui-router.js"></script>

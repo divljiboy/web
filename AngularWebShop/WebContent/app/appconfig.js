@@ -2,7 +2,7 @@
 
     angular.module('webShop').config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
-        $urlRouterProvider.otherwise('/home');
+        
         $stateProvider
           .state('home', {
               url: '/home',
