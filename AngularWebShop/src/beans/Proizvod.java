@@ -1,14 +1,7 @@
 package beans;
 
+import java.awt.Image;
 import java.io.Serializable;
-
-/***********************************************************************
- * Module:  Proizvod.java
- * Author:  Home
- * Purpose: Defines the Class Proizvod
- ***********************************************************************/
-
-import java.util.*;
 
 /** @pdOid 9ddc6c83-56b1-497b-8cad-54aeb6aa4c07 */
 public class Proizvod implements Serializable {
@@ -31,9 +24,9 @@ public class Proizvod implements Serializable {
    /** @pdOid 5de598aa-cac1-428d-8e0c-50a821f0d439 */
    private Float ocena;
    /** @pdOid 153b8797-5d50-4022-921e-8866e28157f7 */
-   private String slika;
+   //private Image slika;
    /** @pdOid ea7759f6-8136-4d13-ab42-ff3edc3c4f7f */
-   private Kategorija kategorija;
+   //private Kategorija kategorija;
    
    /** @pdRoleInfo migr=no name=Recenzija assc=association2 coll=java.util.List impl=java.util.ArrayList mult=0..* side=A */
    public java.util.List<Recenzija> recenzija;
@@ -114,21 +107,6 @@ public void setOcena(Float ocena) {
 	this.ocena = ocena;
 }
 
-public String getSlika() {
-	return slika;
-}
-
-public void setSlika(String slika) {
-	this.slika = slika;
-}
-
-public Kategorija getKategorija() {
-	return kategorija;
-}
-
-public void setKategorija(Kategorija kategorija) {
-	this.kategorija = kategorija;
-}
 
 /** @pdGenerated default getter */
    public java.util.List<Recenzija> getRecenzija() {

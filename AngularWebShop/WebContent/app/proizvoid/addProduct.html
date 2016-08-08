@@ -67,6 +67,7 @@
     
   </div>
 </div>
+
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="Weight">Price</label>  
@@ -76,14 +77,17 @@
   </div>
 </div>
 
-<!-- File Button --> 
+<!-- File Button
 <div class="form-group">
   <label class="col-md-4 control-label" for="filebutton">Choose image</label>
   <div class="col-md-4">
-    <input id="filebutton" name="filebutton" class="input-file" ng-model="product.slika" type="file">
-  </div>
+    <input type="file" name="myImage" image-with-preview ng-model="slika" accept="image/jpeg,image/png">
+    <span class="error" ng-show="myForm.myImage.$error.image">
+        Not a JPEG or a PNG!
+    </span>
+    <img ng-show="image.src" ng-src="{{image.src}}"/></div>
 </div>
-
+ --> 
 <!-- Button (Double) -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="button1id"></label>
