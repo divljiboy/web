@@ -2,33 +2,30 @@
        
     angular.module('webShop')
     	.controller('allProductsController', ['$scope', '$state', '$rootScope', 'productsService', '$stateParams','uiGridConstants', function ($scope, $state, $rootScope, productsService,uiGridConstants, $stateParams) {
-		       console.log('from allProducts');
-		     
-		       
-		    	 
-		    		 productsService.getAll().then(function(response) {
-		    	        $scope.proizvodi = response.data;
-		    	        $scope.gridOptions.data = response.data;
-		    	        
-		    	        $scope.gridOptions.multiSelect = false;
-		    		    $scope.gridOptions.modifierKeysToMultiSelect = false;
-		    		    $scope.gridOptions.noUnselect = true;
+		      
+    		productsService.getAll().then(function(response) {
+				   $scope.proizvodi = response.data;
+			       $scope.gridOptions.data = response.data;
+				    	           
+		    });
+    		
+    		$scope.gridOptions={};
+		    $scope.gridOptions.multiSelect = false;
+		    $scope.gridOptions.modifierKeysToMultiSelect = false;
+		    $scope.gridOptions.noUnselect = true;
 		    		    
-		    			$scope.gridOptions.onRegisterApi = function( gridApi ) {
-		    			      $scope.gridApi = gridApi;
-		    			};
+		    $scope.gridOptions.onRegisterApi = function( gridApi ) {
+		    			  $scope.gridApi = gridApi;
+		    };
 		    			   
-		    			$scope.toggleRowSelection = function() {
-		    			      $scope.gridApi.selection.clearSelectedRows();
-		    			      $scope.gridOptions.enableRowSelection = !$scope.gridOptions.enableRowSelection;
-		    			      $scope.gridApi.core.notifyDataChange( uiGridConstants.dataChange.OPTIONS);
-		    			 };
+		    $scope.toggleRowSelection = function() {
+		    	$scope.gridApi.selection.clearSelectedRows();
+		        $scope.gridOptions.enableRowSelection = !$scope.gridOptions.enableRowSelection;
+		        $scope.gridApi.core.notifyDataChange( uiGridConstants.dataChange.OPTIONS);
+		    	};
 		    	        
-					   
-		    	    });
-		    	   
 		    	 
-
+		    
 		    	 
 		       $scope.obrisiSlog = function () {
 		    	
