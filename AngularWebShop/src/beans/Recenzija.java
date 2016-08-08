@@ -20,6 +20,8 @@ public class Recenzija {
    /** @pdOid 6f3d1f3a-7c6f-4c65-923c-33e36e48938b */
    private Korisnik korsnik;
    
+   private Proizvod proizvod;
+   
    /** @pdOid 081168d5-848e-4004-9656-b6f0a62b9619 */
    public String getKomentar() {
       return komentar;
