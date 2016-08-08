@@ -3,23 +3,41 @@
 
     angular.module('webShop').config(['$stateProvider', function ($stateProvider) {
             $stateProvider
-            .state('bla',
+            .state('allProducts',
                 {
-                    url: '/bla',
+                    url: '/allProducts',
                     views:
                     {
   
                         'navbar': {
-                            templateUrl: 'partials/products.html'
+                            templateUrl: 'partials/navbar.html'
                          },
                          'content':{
                         	 
-                        	 templateUrl: 'partials/products.html'
+                        	 templateUrl: 'app/proizvoid/products.html',
+                        	 controller: 'allProductsController'
                          }
-            
+                         
                     }
+               })
+              .state('addProducts',
+            	 {
+            	  	url:'/addProducts',
+            	  	views:
+            	  	{
+            	  		'navbar':{
+            	  			templateUrl: 'partials/navbar.html'
+            	  		},
+            	  		'content':{
+            	  			templateUrl: 'app/proizvoid/addProduct.html',
+            	  			controller: 'addProductController'
+            	  		}
+            	  		
+            	  	}
+            	
+            	  
+                 })
                     
-                }
-            )
+   
                 }]);
 })(angular);

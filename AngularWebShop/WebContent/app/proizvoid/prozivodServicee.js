@@ -1,4 +1,4 @@
-/*(function () {
+(function () {
 
     angular.module('webShop')
         .service('prozivodService', ['$http', function ($http) {
@@ -12,10 +12,10 @@
                     {
                 
                 },
-                    post: function (banka, onSuccess, onError) {
+                    post: function (product, onSuccess, onError) {
                     	$http.post('/AngularWebShop/rest/proizvodi/add', {"id":''+product.id, "count":parseInt(product.count)});
                     	
-                    },
+                }/*,
                     deleteSlog: function (banka, onSuccess, onError) {
                         var req = {
                             method: 'DELETE',
@@ -27,7 +27,7 @@
                         };
                         $http(req).then(onSuccess, onError);
 
-                    }
+                    }*/
             }
 
 
@@ -35,4 +35,4 @@
 
         }]);
 
-})();*/
+})();
