@@ -3,13 +3,14 @@
     angular.module('webShop')
     	.controller('allProductsController', ['$scope', '$state', '$rootScope', 'productsService', '$stateParams','uiGridConstants', function ($scope, $state, $rootScope, productsService,uiGridConstants, $stateParams) {
 		       
-    				$scope.selektovaniSlog={};
+    				
+    		 $scope.selektovaniSlog={};
 		       
 		    	 
-		    		var podaci=function(){ productsService.getAll().success(function(response) {
-			    	        $scope.proizvodi = response.data;
-			    	        $scope.gridOptions.data = response.data;
-			    	    });
+		    		var podaci=function(){ productsService.getAll().then(function(response) {
+		    	        $scope.proizvodi = response.data;
+		    	        $scope.gridOptions.data = response.data;
+		    	    });
 		    		};
 		    	 
 		    		podaci();
