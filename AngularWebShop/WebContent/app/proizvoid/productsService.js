@@ -10,10 +10,15 @@
                 },
                 put: function (product, onSucces, onError)
                     {
+                	console.log('put put')
+                  return $http.put('/AngularWebShop/rest/product/editProduct', product)
                 
                 },
                 post: function (product, onSuccess, onError) {
-                    	$http.post('/AngularWebShop/rest/product/add', product);
+                    	$http.post('/AngularWebShop/rest/product/add', product).success(function(data) {
+      		    		  
+ 		    			  return data;
+                    });
                     	
                     	
                 }

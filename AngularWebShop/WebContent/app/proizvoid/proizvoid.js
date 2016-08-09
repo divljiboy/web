@@ -22,7 +22,7 @@
                })
               .state('addProducts',
             	 {
-            	  	url:'/addProducts',
+            	  	url:'/addProducts/{operacija}',
             	  	views:
             	  	{
             	  		'navbar':{
@@ -37,6 +37,20 @@
             	
             	  
                  })
+               .state('editProducts',{
+            	   url:'/editProducts/{operacija}',
+            	  	views:
+            	  	{
+            	  		'navbar':{
+            	  			templateUrl: 'partials/navbar.html'
+            	  		},
+            	  		'content':{
+            	  			templateUrl: 'app/proizvoid/addProduct.html',
+            	  			controller: 'editProductController'
+            	  		}
+            	  		
+            	  	}
+               })
                      
                     
    
