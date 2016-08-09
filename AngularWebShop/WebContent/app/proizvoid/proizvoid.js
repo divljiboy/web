@@ -20,24 +20,37 @@
                          
                     }
                })
-              .state('addProducts',
-            	 {
-            	  	url:'/addProducts',
-            	  	views:
-            	  	{
-            	  		'navbar':{
-            	  			templateUrl: 'partials/navbar.html'
-            	  		},
-            	  		'content':{
-            	  			templateUrl: 'app/proizvoid/addProduct.html',
-            	  			controller: 'addProductController'
-            	  		}
-            	  		
-            	  	}
-            	
-            	  
-                 })
-                     
+               .state('addProducts',
+                  	 {
+                  	  	url:'/addProducts/{operacija}',
+                  	  	views:
+                  	  	{
+                  	  		'navbar':{
+                  	  			templateUrl: 'partials/navbar.html'
+                  	  		},
+                  	  		'content':{
+                  	  			templateUrl: 'app/proizvoid/addProduct.html',
+                  	  			controller: 'addProductController'
+                  	  		}
+                  	  		
+                  	  	}
+                  	
+                  	  
+                       })
+                     .state('editProducts',{
+                  	   url:'/editProducts/{operacija}',
+                  	  	views:
+                  	  	{
+                  	  		'navbar':{
+                  	  			templateUrl: 'partials/navbar.html'
+                  	  		},
+                  	  		'content':{
+                  	  			templateUrl: 'app/proizvoid/addProduct.html',
+                  	  			controller: 'editProductController'
+                  	  		}
+                  	  		
+                  	  	}
+                     })
                     
    
                 }]);

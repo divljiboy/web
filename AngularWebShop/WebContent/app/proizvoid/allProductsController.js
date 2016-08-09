@@ -1,7 +1,7 @@
 (function (angular) {
        
     angular.module('webShop')
-    	.controller('allProductsController', ['$scope', '$state', '$rootScope', 'productsService', '$stateParams','uiGridConstants', function ($scope, $state, $rootScope, productsService,uiGridConstants, $stateParams) {
+    	.controller('allProductsController', ['$scope', '$state','$uibModal' ,'$rootScope', 'productsService', '$stateParams','uiGridConstants', function ($scope, $state,$uibModal, $rootScope, productsService, $stateParams, uiGridConstants ) {
 		       
     		 $scope.selektovaniSlog={};
 		       
@@ -16,7 +16,7 @@ podaci();
 		    	 
 		      
 		      
-	
+	          $scope.service=productsService;
 		       $scope.gridOptions = {enableRowSelection: true, enableRowHeaderSelection: false };
 		    		   
 	           $scope.gridOptions.columnDefs = [
@@ -53,19 +53,17 @@ podaci();
 	           
 	           
 	            $scope.obrisiSlog = function () {
-			    	
 	            	if ($scope.gridApi.selection.getSelectedRows().length > 0) {
 
 	                    console.log($scope.selektovaniSlog.sifra);
 	                   
 	                    $scope.animationsEnabled = true;
-
-	                    //ovo je moje nesto
-	                   /*
-	                        $state.go('UkidanjeRacuna', { 'idRacun': $scope.selektovaniSlog.Id });
-	                    else
-	                        alert("Racun " + $scope.selektovaniSlog.BrojRacuna + " je vec ukinut");
-	                   */
+	                    var modalInstance = $uibModal.open({
+	                        backdrop: false,
+	                        templateUrl: 'partials/brisanje.html',
+	                        controller: 'brisanjeSlogaController',
+	                        scope: $scope
+	                    });
 	                }
 	                else {
 	                    alert("Niste selektovali nista !");
@@ -73,11 +71,22 @@ podaci();
 			       };
 			       
 			       $scope.dodajSlog = function () {
-			    	 
-			    	   $state.go('addProducts');
+			    	   $rootScope.product = null;
+			    	   $state.go('addProducts',{"operacija" : "add"});
+			    	   
 			   
 			       };
-	           
+			       $scope.izmeniSlog = function(){
+	            	   console.log($scope.selektovaniSlog)
+	            	 if(Object.keys($scope.selektovaniSlog).length ){
+		            	   $rootScope.product = $scope.selektovaniSlog
+		            	   
+		            	   $state.go('editProducts',{"operacija" : "edit"})	
+	            	 }else{
+	            		 alert('Niste selekovali nista')
+	            	 }   
+		              
+	               }
 	           
 }]);		   
 })(angular);

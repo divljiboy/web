@@ -8,7 +8,7 @@
 		    	   $rootScope.drzava = {};
 		       
 		       $scope.addFlag = false;
-			      
+			      console.log($stateParams.operacija)
 		       if($stateParams.operacija === "add"){
 		            $scope.addFlag = true;
 		            
@@ -17,7 +17,7 @@
 		       $scope.addProduct = function(){
 		    	   
 		    	   productsService.post($scope.product)
-		    	  
+		    	   $state.go('allProducts')
 		       }
    }]);
 

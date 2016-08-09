@@ -21,6 +21,12 @@
                     });
                     	
                     	
+                },
+                deleteSlog : function(bla,onSuccess,onError)
+                {
+                
+                  return  $http.post('/AngularWebShop/rest/product/delete/'+bla);
+                   
                 }
             }
 
