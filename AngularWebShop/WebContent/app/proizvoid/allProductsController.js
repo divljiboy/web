@@ -6,7 +6,7 @@
     				$scope.selektovaniSlog={};
 		       
 		    	 
-		    		var podaci=function(){ productsService.getAll().then(function(response) {
+		    		var podaci=function(){ productsService.getAll().success(function(response) {
 			    	        $scope.proizvodi = response.data;
 			    	        $scope.gridOptions.data = response.data;
 			    	    });

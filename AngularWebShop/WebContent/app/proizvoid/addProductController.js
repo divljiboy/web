@@ -17,7 +17,7 @@
 		       $scope.addProduct = function(){
 		    	   
 		    	   productsService.post($scope.product)
-
+		    	  
 		       }
    }]);
 

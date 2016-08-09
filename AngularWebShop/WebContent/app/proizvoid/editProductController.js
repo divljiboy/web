@@ -16,7 +16,7 @@
 		    	   console.log('from edit put')
 		    	   productsService.put($scope.product)
 		    	   $rootScope.product = null;
-		    	   $window.history.back();
+		    	   $state.go('allProducts')
 		       }
    }]);
 
