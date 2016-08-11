@@ -10,7 +10,7 @@ public class Proizvod implements Serializable {
 	/** @pdOid 484151a4-f734-419b-ac6a-a9f42b9d7c96 */
 	private String naziv;
 	/** @pdOid 9d38aed0-89ec-4e75-b68a-5f78170723fa */
-	private int boja;
+	private String boja;
 	/** @pdOid f3b42150-0b33-4a40-84b3-2078c6e44245 */
 	private Float dimenzija;
 	/** @pdOid 6f089cc3-0e05-4233-80c2-dc93a874836c */
@@ -54,11 +54,13 @@ public class Proizvod implements Serializable {
 		this.naziv = naziv;
 	}
 
-	public int getBoja() {
+	
+
+	public String getBoja() {
 		return boja;
 	}
 
-	public void setBoja(int boja) {
+	public void setBoja(String boja) {
 		this.boja = boja;
 	}
 
