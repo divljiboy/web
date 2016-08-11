@@ -38,7 +38,6 @@
 													});
 
 								}
-								$scope.gridOptions.data=$scope.podaci;
 								$scope.service = dostavljacService;
 								$scope.gridOptions = {
 									enableRowSelection : true,
@@ -58,6 +57,8 @@
 									name : 'tarifa'
 								} ];
 
+								$scope.gridOptions.data=$scope.podaci;
+								
 								$scope.gridOptions.multiSelect = false;
 								$scope.gridOptions.noUnselect = true;
 								$scope.gridOptions.onRegisterApi = function(
