@@ -15,12 +15,14 @@
 		     
 		       $scope.addSlog = function(){
 		    	  
-		    	   dostavljacService.post($scope.dostavljac)
-		    	   $state.go('allDostavljac')
+		    	   dostavljacService.post($scope.dostavljac);
+		    	
+		
+		    	   $state.go('allDostavljac');
 		       }
 		       $scope.cancelSlog=function(){
 			    	  $window.history.back();
-			      };
+			   };
    }]);
 
 

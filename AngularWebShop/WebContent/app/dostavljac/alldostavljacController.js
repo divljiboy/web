@@ -7,28 +7,38 @@
 					[
 							'$scope',
 							'$state',
-							'$uibModal',
 							'$rootScope',
 							'dostavljacService',
 							'$stateParams',
 							'uiGridConstants',
-							function($scope, $state, $uibModal, $rootScope,
+							function($scope, $state, $rootScope,
 									dostavljacService, $stateParams,
 									uiGridConstants) {
 
 								$scope.selektovaniSlog = {};
 
-								var podaci = function() {
+								var init = function() {
+									console.log("Pozvao funckioju init()");
 									dostavljacService
 											.getAll()
 											.then(
 													function(response) {
+														console
+																.log("uspelo getovanje");
+														console
+																.log(response.data);
 														$scope.gridOptions.data = response.data;
+														$scope.podaci = response.data;
+
+													},
+													function(response) {
+
+														console
+																.log("nije uspelo logovanje");
 													});
-								};
 
-								podaci();
-
+								}
+								$scope.gridOptions.data=$scope.podaci;
 								$scope.service = dostavljacService;
 								$scope.gridOptions = {
 									enableRowSelection : true,
@@ -63,7 +73,6 @@
 														$scope.selektovaniSlog.opis = row.entity.opis;
 														$scope.selektovaniSlog.drzava = row.entity.drzava;
 														$scope.selektovaniSlog.tarifa = row.entity.tarifa;
-														
 
 													});
 								};
@@ -73,25 +82,32 @@
 											.getSelectedRows().length > 0) {
 
 										
+										$scope.service
+												.deleteSlog(
+														$scope.selektovaniSlog.sifra)
+												.then(
+														function(res) {
+															alert("Uspesno obrisan sloga iz tabele ");
 
-										$scope.animationsEnabled = true;
-										var modalInstance = $uibModal
-												.open({
-													backdrop : false,
-													templateUrl : 'partials/brisanje.html',
-													controller : 'brisanjeSlogaController',
-													scope : $scope
-												});
+															init();
+
+														},
+														function(res) {
+															alert("Neuspesno brisanje iz tabele ");
+
+															init();
+														})
 									} else {
 										alert("Niste selektovali nista !");
 									}
 								};
 
 								$scope.dodajSlog = function() {
-									$rootScope.product = null;
+									$rootScope.dostavljac = null;
 									$state.go('addDostavljac', {
 										"operacija" : "add"
 									});
+									init();
 
 								};
 								$scope.izmeniSlog = function() {
@@ -101,11 +117,13 @@
 										$state.go('editDostavljac', {
 											"operacija" : "edit"
 										})
+										init();
+
 									} else {
 										alert('Niste selekovali nista')
 									}
 
 								}
-
+								init();
 							} ]);
 })(angular);
