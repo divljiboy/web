@@ -18,6 +18,7 @@
 								$scope.selektovaniSlog = {};
 
 								var podaci = function() {
+									console.log("usao u podaci");
 									productsService
 											.getAll()
 											.then(
@@ -63,9 +64,8 @@
 								}, {
 									name : 'ocena'
 								} ];
-								$scope.gridOptions.data=$scope.podaci;
-								
-								
+								$scope.gridOptions.data = $scope.podaci;
+
 								$scope.gridOptions.multiSelect = false;
 								$scope.gridOptions.noUnselect = true;
 								$scope.gridOptions.onRegisterApi = function(
@@ -92,26 +92,22 @@
 								$scope.obrisiSlog = function() {
 									if ($scope.gridApi.selection
 											.getSelectedRows().length > 0) {
-
+										console.log("usao u delete");
 										$scope.service
 												.deleteSlog(
-														$scope.selektovaniSlog.sifra,
+														$scope.selektovaniSlog.sifra)
+												.then(
 														function(res) {
 															alert("Uspesno obrisan sloga iz tabele ");
 
-															$state
-																	.go('allProducts');
 															podaci();
 
 														},
 														function(res) {
 															alert("Neuspesno brisanje iz tabele ");
 
-															$state
-																	.go('allProducts');
 															podaci();
-														});
-
+														})
 									} else {
 										alert("Niste selektovali nista !");
 									}
@@ -140,6 +136,6 @@
 
 								}
 								podaci();
-								
+
 							} ]);
 })(angular);
