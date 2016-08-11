@@ -3,7 +3,7 @@
     angular.module('webShop')
     	.controller('editDostavljacController', ['$window','$scope', '$state', '$rootScope', 'dostavljacService', '$stateParams', function ($window,$scope, $state, $rootScope, dostavljacService, $stateParams) {
 		      
-		      
+    		$scope.gridOptions={};
 		      $scope.editFlag = false;
 		      
 		        if($stateParams.operacija === "edit"){
@@ -15,22 +15,9 @@
 		      $scope.editSlog = function(){
 		    	   console.log('from edit put')
 		    	   dostavljacService.put($scope.dostavljac)
-		    	   $rootScope.product = null;
-		    	   dostavljacService
-					.getAll()
-					.then(
-							function(response) {
-							console.log("uspelo getovanje");
-							console.log(response.data);
-							$scope.gridOptions.data=response.data;
-							$scope.podaci=response.data;
-							
-							},
-							function(response){
-								
-								console.log("nije uspelo getovanje");
-							});
-		
+		    	   
+		$rootScope.dostavljac = null;
+		    	   
 		    	   $state.go('allDostavljac')
 		      };
 		      $scope.cancelSlog=function(){
