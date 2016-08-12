@@ -1,18 +1,52 @@
 package beans;
 
-/***********************************************************************
- * Module:  Dostavljac.java
- * Author:  Home
- * Purpose: Defines the Class Dostavljac
- ***********************************************************************/
-
-import java.util.*;
+import java.io.Serializable;
 
 /** @pdOid a1034296-6d43-464c-9432-06ac1d9bcbb7 */
-public class Dostavljac {
-   /** @pdOid 94f6c11b-5e9e-46e7-8050-f2d512b42791 */
+public class Dostavljac implements Serializable{
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -9107221058027758662L;
+/**
+	 * 
+	 */
+	
+/** @pdOid 94f6c11b-5e9e-46e7-8050-f2d512b42791 */
    private int sifra;
-   /** @pdOid 14509fd1-4fae-4ea1-98ff-c7f0f367e435 */
+   public String getNaziv() {
+	return naziv;
+}
+
+public void setNaziv(String naziv) {
+	this.naziv = naziv;
+}
+
+public String getOpis() {
+	return opis;
+}
+
+public void setOpis(String opis) {
+	this.opis = opis;
+}
+
+public String getDrzava() {
+	return drzava;
+}
+
+public void setDrzava(String drzava) {
+	this.drzava = drzava;
+}
+
+public float getTarifa() {
+	return tarifa;
+}
+
+public void setTarifa(float tarifa) {
+	this.tarifa = tarifa;
+}
+
+/** @pdOid 14509fd1-4fae-4ea1-98ff-c7f0f367e435 */
    private String naziv;
    /** @pdOid 8083cfa8-1648-449f-aa7a-747e85bf3766 */
    private String opis;

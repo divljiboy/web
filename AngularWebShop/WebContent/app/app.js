@@ -6,6 +6,7 @@
     	 $rootScope.inicijalizacija = function(){
              $rootScope.product = null;
              $rootScope.allShop = null;
+             $rootScope.dostavljac=null;
          }
 
          $rootScope.inicijalizacija();
