@@ -14,21 +14,8 @@
       <a class="nav-link" ui-sref="allShops()">All shops</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" ui-sref="allDostavljac()">All dostavljaci</a>
+      <a class="nav-link" ui-sref="chooseShop()">Shopping Cart</a>
     </li>
-    <li class="nav-item" uib-dropdown>
-	
-      <a class="nav-link" href id="simple-dropdown" uib-dropdown-toggle>
-        Choose shops
-      </a>
-      <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
-        <li ng-repeat="s in allShop">
-          <li role="menuitem"><a href="#">{{s.naziv}}</a></li>
-       
-        </li>
-      </ul>
-    
-	</li>
   </ul>
   
 </nav>

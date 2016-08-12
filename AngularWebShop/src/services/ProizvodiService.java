@@ -1,5 +1,6 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -43,7 +44,18 @@ public class ProizvodiService {
 				return "error";
 			}
 		}
-		p.setSifra(trenutna.size()+1);
+		if(trenutna.size() == 0){
+
+		if (trenutna.size() == 0) {
+			p.setSifra(1);
+		} else {
+			p.setSifra(trenutna.get(trenutna.size() - 1).getSifra() + 1);
+		};
+
+			}else{
+				System.out.println("prvo provera da li se dobija poslednji" +(trenutna.get(trenutna.size()-1).getSifra()+1));
+				p.setSifra(trenutna.get(trenutna.size()-1).getSifra()+1);
+			}
 		trenutna.add(p);
 		
 		
@@ -57,6 +69,22 @@ public class ProizvodiService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public List<Proizvod> getProizvodi(){
 		return getProducts();
+		
+	}
+	@GET
+	@Path("/getProductByShop/{shopName}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public List<Proizvod> getProizvodiByShop(@PathParam("shopName") String shopName){
+		ArrayList<Proizvod> allProductByShop = new ArrayList<Proizvod>() ;
+		for(int i =0; i < getProducts().size();i++){
+			
+			if(getProducts().get(i).getProdavnica().getNaziv().equals(shopName)){
+				System.out.println("idemo");
+				allProductByShop.add(getProducts().get(i));
+			}
+		}
+		return allProductByShop;
 		
 	}
 	@POST

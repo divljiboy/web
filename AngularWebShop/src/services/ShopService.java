@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -44,15 +45,20 @@ public class ShopService {
 			}
 		}
 		
-		p.setSifra(trenutna.size()+1);
+		if (trenutna.size() == 0) {
+			p.setSifra(1);
+		} else {
+			p.setSifra(trenutna.get(trenutna.size() - 1).getSifra() + 1);
+		}
+
 		trenutna.add(p);
-		ctx.setAttribute("shop", trenutna);
+		ctx.setAttribute("shopovi", trenutna);
 		shop.serijalizuj(trenutna);
 		return "OK";
 	}
 	
 	@GET
-	@Path("/getJustShops")
+	@Path("/get")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public List<Prodavnica> getProdavnica(){
@@ -60,8 +66,32 @@ public class ShopService {
 		
 	}
 	
+	@POST
+	@Path("/delete/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String delete(@PathParam("id") int sifra) {
+		List<Prodavnica> trenutna=getProdavnica();
+		System.out.println(trenutna.size());
+		for(int i=0;i<=trenutna.size()-1;i++)
+		{
+			if(trenutna.get(i).getSifra()==sifra)
+			{
+				trenutna.remove(i);
+				break;
+			}
+		}
+		System.out.println(trenutna.size());
+		ctx.setAttribute("shopovi", trenutna);
+		shop.serijalizuj(trenutna);
+		
+		return "ok";
+	}
+
+	
+	
 	@PUT
-	@Path("/editShop")
+	@Path("/edit")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String putProizvod(Prodavnica p){
@@ -76,7 +106,7 @@ public class ShopService {
 		  }
 	   }
 	   shop.serijalizuj(trenutna);
-	   ctx.setAttribute("proizvodi", shop.getLista());
+	   ctx.setAttribute("shopovi", shop.getLista());
 		
 	   
 	  return "ok";

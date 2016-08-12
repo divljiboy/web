@@ -11,6 +11,7 @@
   
                         'navbar': {
                             templateUrl: 'partials/navbar.html'
+                            
                          },
                          'content':{
                         	 
@@ -43,6 +44,7 @@
                   	  	{
                   	  		'navbar':{
                   	  			templateUrl: 'partials/navbar.html'
+                              
                   	  		},
                   	  		'content':{
                   	  			templateUrl: 'app/shop/addShop.html',

@@ -28,6 +28,10 @@
                   return  $http.post('/AngularWebShop/rest/product/delete/'+bla);
                    
                 }
+                ,getProductByShop : function (shopName)
+                {	console.log(shopName)
+                	return $http.get('/AngularWebShop/rest/product/getProductByShop/'+shopName)
+                }
             }
 
 
