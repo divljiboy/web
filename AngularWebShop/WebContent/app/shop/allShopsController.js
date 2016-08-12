@@ -24,6 +24,7 @@ angular
 
 							podaci();
 
+							$scope.service = shopService;
 							$scope.gridOptions = {
 								enableRowSelection : true,
 								enableRowHeaderSelection : false
@@ -65,6 +66,31 @@ angular
 													$scope.selektovaniSlog.email = row.entity.email;
 
 												});
+							};
+
+							$scope.obrisiSlog = function() {
+								if ($scope.gridApi.selection.getSelectedRows().length > 0) {
+									console.log("usao u shop delete");
+
+									$scope.service
+											.deleteSlog(
+													$scope.selektovaniSlog.sifra)
+											.then(
+													function(res) {
+														alert("Uspesno obrisan sloga iz tabele ");
+
+														podaci();
+
+													},
+													function(res) {
+														alert("Neuspesno brisanje iz tabele ");
+
+														podaci();
+													});
+
+								} else {
+									alert("Niste selektovali nista !");
+								}
 							};
 
 							$scope.dodajSlog = function() {

@@ -16,7 +16,7 @@
 		    	   console.log('from edit put')
 		    	   dostavljacService.put($scope.dostavljac)
 		    	   
-		$rootScope.dostavljac = null;
+		           $rootScope.dostavljac = null;
 		    	   
 		    	   $state.go('allDostavljac')
 		      };
