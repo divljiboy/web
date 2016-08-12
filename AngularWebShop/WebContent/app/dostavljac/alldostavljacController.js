@@ -37,7 +37,7 @@
 																.log("nije uspelo logovanje");
 													});
 
-								}
+								};
 								$scope.service = dostavljacService;
 								$scope.gridOptions = {
 									enableRowSelection : true,

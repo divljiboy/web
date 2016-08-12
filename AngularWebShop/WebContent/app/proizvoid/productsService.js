@@ -4,17 +4,17 @@
         .service('productsService', ['$http', function ($http) {
             //metode servisa
             return {
-                getAll: function (onSuccess, onError) {
+                getAll: function () {
                     
                   return $http.get('/AngularWebShop/rest/product/getJustProducts');
                 },
-                put: function (product, onSucces, onError)
+                put: function (produc)
                     {
                 	console.log('put put')
                   return $http.put('/AngularWebShop/rest/product/editProduct', product)
                 
                 },
-                post: function (product, onSuccess, onError) {
+                post: function (product) {
                     	$http.post('/AngularWebShop/rest/product/add', product).success(function(data) {
       		    		  
  		    			  return data;
@@ -22,7 +22,7 @@
                     	
                     	
                 },
-                deleteSlog : function(bla,onSuccess,onError)
+                deleteSlog : function(bla)
                 {
                 
                   return  $http.post('/AngularWebShop/rest/product/delete/'+bla);

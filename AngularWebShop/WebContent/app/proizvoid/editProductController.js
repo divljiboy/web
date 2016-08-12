@@ -14,9 +14,15 @@
 		      
 		      $scope.editProduct = function(){
 		    	   console.log('from edit put')
-		    	   productsService.put($scope.product)
+		    	   productsService.put($scope.product).then(
+		    			   function(reposnse){
+		    				   alert("Uspesno editovano polje");
+		    			   },function (response)
+		    			   {
+		    				   alert("Neuspesno editovano polje");
+		    			   });
 		    	   $rootScope.product = null;
-		    	   $state.go('allProducts')
+		    	   $state.go('allProducts');
 		       }
    }]);
 
