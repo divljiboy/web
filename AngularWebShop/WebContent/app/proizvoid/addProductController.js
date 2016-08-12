@@ -40,12 +40,7 @@
 						$scope.addProduct = function() {
 							console.log($scope.selectedValue)
 
-							productsService.post($scope.product)
-							then(function(response) {
-								alert("Uspesno dodat");
-							}, function(response) {
-								alert("Neuspesno dodat");
-							});
+							productsService.post($scope.product);
 							$state.go('allProducts');
 						};
 

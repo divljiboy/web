@@ -1,31 +1,35 @@
-(function (angular) {
-       
-    angular.module('webShop')
-    	.controller('editProductController', ['$window','$scope', '$state', '$rootScope', 'productsService', '$stateParams', function ($window,$scope, $state, $rootScope, productsService, $stateParams) {
-		      
-		      
-		      $scope.editFlag = false;
-		      
-		        if($stateParams.operacija === "edit"){
-		            $scope.editFlag = true;
-		            
-		        }
+(function(angular) {
 
-		      
-		      $scope.editProduct = function(){
-		    	   console.log('from edit put')
-		    	   productsService.put($scope.product).then(
-		    			   function(reposnse){
-		    				   alert("Uspesno editovano polje");
-		    			   },function (response)
-		    			   {
-		    				   alert("Neuspesno editovano polje");
-		    			   });
-		    	   $rootScope.product = null;
-		    	   $state.go('allProducts');
-		       }
-   }]);
+	angular.module('webShop').controller(
+			'editProductController',
+			[
+					'$window',
+					'$scope',
+					'$state',
+					'$rootScope',
+					'productsService',
+					'$stateParams',
+					function($window, $scope, $state, $rootScope,
+							productsService, $stateParams) {
+						$scope.gridOptions = {};
+						$scope.editFlag = false;
 
+						if ($stateParams.operacija === "edit") {
+							$scope.editFlag = true;
 
-}
-)(angular);
+						}
+
+						$scope.editSlog = function() {
+							console.log('from edit put')
+							productService.put($scope.product)
+
+							 $rootScope.product = null;
+
+							$state.go('allProducts')
+						};
+						$scope.cancelSlog = function() {
+							$window.history.back();
+						};
+					} ]);
+
+})(angular);

@@ -44,7 +44,7 @@ public class ProizvodiService {
 				return "error";
 			}
 		}
-		if(trenutna.size() == 0){
+
 
 		if (trenutna.size() == 0) {
 			p.setSifra(1);
@@ -52,10 +52,7 @@ public class ProizvodiService {
 			p.setSifra(trenutna.get(trenutna.size() - 1).getSifra() + 1);
 		};
 
-			}else{
-				System.out.println("prvo provera da li se dobija poslednji" +(trenutna.get(trenutna.size()-1).getSifra()+1));
-				p.setSifra(trenutna.get(trenutna.size()-1).getSifra()+1);
-			}
+
 		trenutna.add(p);
 		
 		

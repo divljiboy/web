@@ -1,12 +1,12 @@
 
 <form class="form-horizontal">
-<fieldset>
+	<fieldset>
 
-<!-- Form Name -->
-<legend>Form Name</legend>
+		<!-- Form Name -->
+		<legend>Form Name</legend>
 
-<!-- Text input-->
-<!--  
+		<!-- Text input-->
+		<!--  
 <div class="form-group">
   <label class="col-md-4 control-label" for="ID">ID</label>  
   <div class="col-md-4">
@@ -15,70 +15,83 @@
   </div>
 </div>
 -->
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Name</label>  
-  <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" ng-model="product.naziv" placeholder="Name" class="form-control input-md" required="">
-    
-  </div>
-</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Name</label>
+			<div class="col-md-4">
+				<input id="textinput" name="textinput" type="text"
+					ng-model="product.naziv" placeholder="Name"
+					class="form-control input-md" required="">
 
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Color</label>  
-  <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" ng-model="product.boja" placeholder="Color" class="form-control input-md">
-    
-  </div>
-</div>
+			</div>
+		</div>
 
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Country </label>  
-  <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" placeholder="Country" ng-model="product.zemlja" class="form-control input-md">
-    
-  </div>
-</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Color</label>
+			<div class="col-md-4">
+				<input id="textinput" name="textinput" type="text"
+					ng-model="product.boja" placeholder="Color"
+					class="form-control input-md">
 
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Quantity</label>  
-  <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" ng-model="product.kolicina" placeholder="Quantity" class="form-control input-md">
-    
-  </div>
-</div>
+			</div>
+		</div>
 
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Dimension</label>  
-  <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" ng-model="product.dimenzija" placeholder="Dimension" class="form-control input-md">
-    
-  </div>
-</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Country
+			</label>
+			<div class="col-md-4">
+				<input id="textinput" name="textinput" type="text"
+					placeholder="Country" ng-model="product.zemlja"
+					class="form-control input-md">
 
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="Weight">Weight</label>  
-  <div class="col-md-4">
-  <input id="Weight" name="Weight" ng-model="product.tezina" type="text" placeholder="Weight" class="form-control input-md">
-    
-  </div>
-</div>
+			</div>
+		</div>
 
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="Weight">Price</label>  
-  <div class="col-md-4">
-  <input id="Price" name="Price" ng-model="product.cena" type="text" placeholder="Price" class="form-control input-md">
-    
-  </div>
-</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Quantity</label>
+			<div class="col-md-4">
+				<input id="textinput" name="textinput" type="text"
+					ng-model="product.kolicina" placeholder="Quantity"
+					class="form-control input-md">
 
-<!-- File Button
+			</div>
+		</div>
+
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Dimension</label>
+			<div class="col-md-4">
+				<input id="textinput" name="textinput" type="text"
+					ng-model="product.dimenzija" placeholder="Dimension"
+					class="form-control input-md">
+
+			</div>
+		</div>
+
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="Weight">Weight</label>
+			<div class="col-md-4">
+				<input id="Weight" name="Weight" ng-model="product.tezina"
+					type="text" placeholder="Weight" class="form-control input-md">
+
+			</div>
+		</div>
+
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="Weight">Price</label>
+			<div class="col-md-4">
+				<input id="Price" name="Price" ng-model="product.cena" type="text"
+					placeholder="Price" class="form-control input-md">
+
+			</div>
+		</div>
+
+		<!-- File Button
 <div class="form-group">
   <label class="col-md-4 control-label" for="filebutton">Choose image</label>
   <div class="col-md-4">
@@ -88,37 +101,41 @@
     </span>
     <img ng-show="image.src" ng-src="{{image.src}}"/></div>
 </div>
- --> 
-<!-- Button (Double) -->
+ -->
+		<!-- Button (Double) -->
 
-<div class="form-group">
-  <label class="col-md-4 control-label" for="selectbasic">Select shop</label>
-  <div class="col-md-4">
-    <select id="selectbasic" name="selectbasic" class="form-control"
-    			ng-model="shopSelected" ng-change="changedValue(shopSelected)" 
-	            data-ng-options="shopS as shopS.naziv for shopS in shops" 
-	            class="form-control"
-	            required>
-      <option value="">Select shop</option>
-    </select>
-  </div>
-</div>
-<div class="form-group" ng-show="editFlag">
-  <label class="col-md-4 control-label" for="button1id"></label>
-  <div class="col-md-8">
-    <button id="button1id" name="button1id" ng-click="editProduct()" class="btn btn-success">OK</button>
-    <button id="cancel" name="cancel" ng-click="cancelProduct()" class="btn btn-danger">Cancel</button>
-  </div>
-</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="selectbasic">Select
+				shop</label>
+			<div class="col-md-4">
+				<select id="selectbasic" name="selectbasic" class="form-control"
+					ng-model="shopSelected" ng-change="changedValue(shopSelected)"
+					data-ng-options="shopS as shopS.naziv for shopS in shops"
+					class="form-control" required>
+					<option value="">Select shop</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group" ng-show="editFlag">
+			<label class="col-md-4 control-label" for="button1id"></label>
+			<div class="col-md-8">
+				<button id="button1id" name="button1id" ng-click="editSlog()"
+					class="btn btn-success">OK</button>
+				<button id="cancel" name="cancel" ng-click="cancelSlog()"
+					class="btn btn-danger">Cancel</button>
+			</div>
+		</div>
 
-<div class="form-group" ng-show="addFlag">
-  <label class="col-md-4 control-label" for="button1id"></label>
-  <div class="col-md-8">
-    <button id="button1id" name="button1id" ng-click="addProduct()" class="btn btn-success">OK</button>
-    <button id="cancel" name="cancel" ng-click="cancelProduct()" class="btn btn-danger">Cancel</button>
-  </div>
-</div>
+		<div class="form-group" ng-show="addFlag">
+			<label class="col-md-4 control-label" for="button1id"></label>
+			<div class="col-md-8">
+				<button id="button1id" name="button1id" ng-click="addSlog()"
+					class="btn btn-success">OK</button>
+				<button id="cancel" name="cancel" ng-click="cancelSlog()"
+					class="btn btn-danger">Cancel</button>
+			</div>
+		</div>
 
-<div id = "alert_placeholder"></div>
-</fieldset>
+		<div id="alert_placeholder"></div>
+	</fieldset>
 </form>
