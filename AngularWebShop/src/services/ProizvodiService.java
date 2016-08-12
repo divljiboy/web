@@ -35,12 +35,15 @@ public class ProizvodiService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String add(Proizvod p) {
 		List<Proizvod> trenutna=getProducts();
+		
+		System.out.println(p.getProdavnica().getNaziv());
 		for(int i = 0;i < trenutna.size(); i++){
 			
-			if(trenutna.get(i).getNaziv().equals(p.getNaziv()) || trenutna.get(i).getSifra() == p.getSifra()){
+			if(trenutna.get(i).getNaziv().equals(p.getNaziv()) ){
 				return "error";
 			}
 		}
+		p.setSifra(trenutna.size()+1);
 		trenutna.add(p);
 		
 		
@@ -87,10 +90,12 @@ public class ProizvodiService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String putProizvod(Proizvod p){
+		System.out.println(p.getSifra());
 		List<Proizvod> trenutna=getProducts();
 	   for(int i=0;i<getProducts().size();i++){
+		  
 		  if(getProducts().get(i).getSifra() == p.getSifra()){
-			  
+			  System.out.println("from loop " + p.getSifra()); 
 			  trenutna.set(i, p);break;
 			  
 		  }

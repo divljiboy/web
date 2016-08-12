@@ -22,7 +22,7 @@
                })
                .state('addProducts',
                   	 {
-                  	  	url:'/addProducts/{operacija}',
+                  	  	url:'/addProducts/{operacija}/{shop}',
                   	  	views:
                   	  	{
                   	  		'navbar':{

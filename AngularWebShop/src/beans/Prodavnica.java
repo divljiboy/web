@@ -1,14 +1,16 @@
 package beans;
 
+import java.io.Serializable;
+
 /** @pdOid c3fc8a09-92b2-4102-abbb-ac1941b964f8 */
-public class Prodavnica {
+public class Prodavnica implements Serializable{
    /** @pdOid e61cbe1a-f5d6-43bc-a28f-257c53efa724 */
    private int sifra;
    /** @pdOid 85416eb4-e94e-435f-ac4e-c404a5777789 */
    private String naziv;
    /** @pdOid f76e3289-1066-4888-80cf-dddd3880658d */
    private String adresa;
-   /** @pdOid e44c074a-dd51-4225-9ed9-efe752d67787 */
+/** @pdOid e44c074a-dd51-4225-9ed9-efe752d67787 */
    private String drzava;
    /** @pdOid 832634e0-c26e-4869-a0b9-f8a19813d181 */
    private String telefon;
@@ -40,5 +42,54 @@ public class Prodavnica {
    public void setSifra(int newSifra) {
       sifra = newSifra;
    }
+   public String getNaziv() {
+	      return naziv;
+	   }
+	   
+	   /** @param newSifra
+	    * @pdOid 3976208b-19f0-47e7-9f0a-cf3be9109997 */
+   public void setNaziv(String newNaziv) {
+	      naziv = newNaziv;
+	   }
+   public String getAdresa() {
+		return adresa;
+	}
+
+	public void setAdresa(String adresa) {
+		this.adresa = adresa;
+	}
+
+	public String getDrzava() {
+		return drzava;
+	}
+
+	public void setDrzava(String drzava) {
+		this.drzava = drzava;
+	}
+
+	public String getTelefon() {
+		return telefon;
+	}
+
+	public void setTelefon(String telefon) {
+		this.telefon = telefon;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Korisnik getProdavac() {
+		return prodavac;
+	}
+
+	public void setProdavac(Korisnik prodavac) {
+		this.prodavac = prodavac;
+	}
+
 
 }
