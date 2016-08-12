@@ -20,7 +20,7 @@
 
 								var podaci = function() {
 									console.log("Pozvao funckioju init()");
-									proizvodService
+									productsService
 											.getAll()
 											.then(
 													function(response) {
@@ -97,21 +97,22 @@
 									if ($scope.gridApi.selection
 											.getSelectedRows().length > 0) {
 
-										$scope.service.deleteSlog(bla)
-										then(
-												function(res) {
-													alert("Uspesno obrisan sloga iz tabele ");
 
-													$state.go('home');
+										$scope.service
+												.deleteSlog(
+														$scope.selektovaniSlog.sifra)
+												.then(
+														function(res) {
+															alert("Uspesno obrisan sloga iz tabele ");
 
-												},
-												function(res) {
-													alert("Neuspesno brisanje iz tabele ");
+															podaci();
 
-													$state.go('home');
-												}
+														},
+														function(res) {
+															alert("Neuspesno brisanje iz tabele ");
 
-										);
+															podaci();
+														});
 
 									} else {
 										alert("Niste selektovali nista !");
