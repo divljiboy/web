@@ -45,7 +45,12 @@ public class ShopService {
 			}
 		}
 		
-		p.setSifra(trenutna.get(trenutna.size()-1).getSifra()+1);
+		if (trenutna.size() == 0) {
+			p.setSifra(1);
+		} else {
+			p.setSifra(trenutna.get(trenutna.size() - 1).getSifra() + 1);
+		}
+
 		trenutna.add(p);
 		ctx.setAttribute("shopovi", trenutna);
 		shop.serijalizuj(trenutna);

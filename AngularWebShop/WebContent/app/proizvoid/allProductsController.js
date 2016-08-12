@@ -40,8 +40,6 @@
 
 								};
 
-								
-
 								$scope.service = productsService;
 								$scope.gridOptions = {
 									enableRowSelection : true,
@@ -68,6 +66,8 @@
 									name : 'kolicina'
 								}, {
 									name : 'ocena'
+								}, {
+									name : 'prodavnica.name'
 								} ];
 
 								$scope.gridOptions.multiSelect = false;
@@ -89,6 +89,7 @@
 														$scope.selektovaniSlog.cena = row.entity.cena;
 														$scope.selektovaniSlog.kolicina = row.entity.kolicina;
 														$scope.selektovaniSlog.ocena = row.entity.ocena;
+														$scope.selektovaniSlog.prodavnica = row.entity.prodavnica;
 
 													});
 								};
@@ -96,7 +97,6 @@
 								$scope.obrisiSlog = function() {
 									if ($scope.gridApi.selection
 											.getSelectedRows().length > 0) {
-
 
 										$scope.service
 												.deleteSlog(
@@ -140,7 +140,7 @@
 									}
 
 								};
-								
+
 								podaci();
 
 							} ]);

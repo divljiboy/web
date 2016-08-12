@@ -7,6 +7,8 @@
              $rootScope.product = null;
              $rootScope.shop = null;
              $rootScope.dostavljac=null;
+             $rootScope.kategorija=null;
+             
          }
 
          $rootScope.inicijalizacija();

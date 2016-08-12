@@ -43,7 +43,13 @@ public class ProizvodiService {
 				return "error";
 			}
 		}
-		p.setSifra(trenutna.size()+1);
+
+		if (trenutna.size() == 0) {
+			p.setSifra(1);
+		} else {
+			p.setSifra(trenutna.get(trenutna.size() - 1).getSifra() + 1);
+		};
+
 		trenutna.add(p);
 		
 		
