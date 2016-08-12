@@ -67,7 +67,7 @@
 								}, {
 									name : 'ocena'
 								}, {
-									name : 'prodavnica.name'
+									name : 'prodavnica.naziv'
 								} ];
 
 								$scope.gridOptions.multiSelect = false;
@@ -90,7 +90,7 @@
 														$scope.selektovaniSlog.kolicina = row.entity.kolicina;
 														$scope.selektovaniSlog.ocena = row.entity.ocena;
 														$scope.selektovaniSlog.prodavnica = row.entity.prodavnica;
-
+														
 													});
 								};
 
@@ -125,6 +125,7 @@
 									$state.go('addProducts', {
 										"operacija" : "add"
 									});
+									podaci();
 
 								};
 								$scope.izmeniSlog = function() {
@@ -135,6 +136,7 @@
 										$state.go('editProducts', {
 											"operacija" : "edit"
 										})
+										podaci();
 									} else {
 										alert('Niste selekovali nista')
 									}

@@ -8,18 +8,17 @@
                     
                   return $http.get('/AngularWebShop/rest/product/getJustProducts');
                 },
-                put: function (produc)
+                put: function (product)
                     {
                 	console.log('put put')
                   return $http.put('/AngularWebShop/rest/product/editProduct', product)
                 
                 },
                 post: function (product) {
-                    	$http.post('/AngularWebShop/rest/product/add', product).than(function(data) {
-      		    		  
- 		    			  return data;
-                    });
-                    	
+                    	$http.post('/AngularWebShop/rest/product/add', product).success(function(data) {
+        		    		  
+   		    			  return data;
+                      });
                     	
                 },
                 deleteSlog : function(bla)

@@ -37,7 +37,7 @@
 							$scope.product.prodavnica = selectedValue
 						};
 
-						$scope.addProduct = function() {
+						$scope.addSlog = function() {
 							console.log($scope.selectedValue)
 
 							productsService.post($scope.product);

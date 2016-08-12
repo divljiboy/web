@@ -108,11 +108,11 @@
 			<label class="col-md-4 control-label" for="selectbasic">Select
 				shop</label>
 			<div class="col-md-4">
-				<select id="selectbasic" name="selectbasic" class="form-control"
+				<select  ng-init="selektovani" id="selectbasic" name="selectbasic" class="form-control"
 					ng-model="shopSelected" ng-change="changedValue(shopSelected)"
 					data-ng-options="shopS as shopS.naziv for shopS in shops"
 					class="form-control" required>
-					<option value="">Select shop</option>
+					
 				</select>
 			</div>
 		</div>
