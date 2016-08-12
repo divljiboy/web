@@ -3,24 +3,22 @@
 	angular
 			.module('webShop')
 			.controller(
-					'allProductsController',
+					'allKategorijeController',
 					[
 							'$scope',
 							'$state',
 							'$rootScope',
-							'productsService',
+							'kategorijaService',
 							'$stateParams',
 							'uiGridConstants',
-							'shopService',
 							function($scope, $state, $rootScope,
-									productsService, $stateParams,
-									uiGridConstants, shopService) {
+									kategorijaService, $stateParams,
+									uiGridConstants) {
 
 								$scope.selektovaniSlog = {};
 
 								var podaci = function() {
-									console.log("Pozvao funckioju init()");
-									productsService
+									kategorijaService
 											.getAll()
 											.then(
 													function(response) {
@@ -35,12 +33,14 @@
 													function(response) {
 
 														console
-																.log("nije uspelo logovanje");
+																.log("nije uspelo getovanje");
 													});
 
 								};
 
-								$scope.service = productsService;
+								
+
+								$scope.service = kategorijaService;
 								$scope.gridOptions = {
 									enableRowSelection : true,
 									enableRowHeaderSelection : false
@@ -53,21 +53,9 @@
 								{
 									name : 'naziv'
 								}, {
-									name : 'boja'
+									name : 'opis'
 								}, {
-									name : 'dimenzija'
-								}, {
-									name : 'tezina'
-								}, {
-									name : 'zemlja'
-								}, {
-									name : 'cena'
-								}, {
-									name : 'kolicina'
-								}, {
-									name : 'ocena'
-								}, {
-									name : 'prodavnica.naziv'
+									name : 'nadkategorija.naziv',displayName: "Nadkategorija"
 								} ];
 
 								$scope.gridOptions.multiSelect = false;
@@ -82,21 +70,17 @@
 
 														$scope.selektovaniSlog.sifra = row.entity.sifra;
 														$scope.selektovaniSlog.naziv = row.entity.naziv;
-														$scope.selektovaniSlog.boja = row.entity.boja;
-														$scope.selektovaniSlog.dimenzija = row.entity.dimenzija;
-														$scope.selektovaniSlog.tezina = row.entity.tezina;
-														$scope.selektovaniSlog.zemlja = row.entity.zemlja;
-														$scope.selektovaniSlog.cena = row.entity.cena;
-														$scope.selektovaniSlog.kolicina = row.entity.kolicina;
-														$scope.selektovaniSlog.ocena = row.entity.ocena;
-														$scope.selektovaniSlog.prodavnica = row.entity.prodavnica;
+														$scope.selektovaniSlog.opis = row.entity.opis;
+														$scope.selektovaniSlog.nadkategorija = row.entity.nadkategorija;
 														
+
 													});
 								};
 
 								$scope.obrisiSlog = function() {
 									if ($scope.gridApi.selection
 											.getSelectedRows().length > 0) {
+
 
 										$scope.service
 												.deleteSlog(
@@ -121,27 +105,25 @@
 
 								$scope.dodajSlog = function() {
 
-									$rootScope.product = null;
-									$state.go('addProducts', {
+									$rootScope.kategorija = null;
+									$state.go('addKategorija', {
 										"operacija" : "add"
 									});
-									podaci();
 
 								};
 								$scope.izmeniSlog = function() {
 									if (Object.keys($scope.selektovaniSlog).length) {
-										$rootScope.product = $scope.selektovaniSlog
+										$rootScope.kategorija = $scope.selektovaniSlog
 
-										$state.go('editProducts', {
+										$state.go('editKategorija', {
 											"operacija" : "edit"
 										})
-										podaci();
 									} else {
 										alert('Niste selekovali nista')
 									}
 
 								};
-
+								
 								podaci();
 
 							} ]);

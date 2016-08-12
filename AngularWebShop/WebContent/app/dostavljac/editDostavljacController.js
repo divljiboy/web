@@ -13,7 +13,6 @@
 
 		      
 		      $scope.editSlog = function(){
-		    	   console.log('from edit put')
 		    	   dostavljacService.put($scope.dostavljac)
 		    	   
 		           $rootScope.dostavljac = null;

@@ -10,7 +10,7 @@
                 },
                 put: function (product)
                     {
-                	console.log('put put')
+                	
                   return $http.put('/AngularWebShop/rest/product/editProduct', product)
                 
                 },

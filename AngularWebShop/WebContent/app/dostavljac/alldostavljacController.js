@@ -18,7 +18,6 @@
 								$scope.selektovaniSlog = {};
 
 								var init = function() {
-									console.log("Pozvao funckioju init()");
 									dostavljacService
 											.getAll()
 											.then(

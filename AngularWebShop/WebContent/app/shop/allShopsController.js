@@ -70,8 +70,7 @@ angular
 
 							$scope.obrisiSlog = function() {
 								if ($scope.gridApi.selection.getSelectedRows().length > 0) {
-									console.log("usao u shop delete");
-
+									
 									$scope.service
 											.deleteSlog(
 													$scope.selektovaniSlog.sifra)

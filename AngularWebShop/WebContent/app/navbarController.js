@@ -7,7 +7,7 @@
     			console.log('bilo sta');
     			
     			$scope.allShop = response.data
-    			console.log(response.data);
+    			//console.log(response.data);
     			/*console.log($scope.allShop[0].naziv)
     			console.log($scope.allShop[1].naziv)*/
     	    });
@@ -16,9 +16,9 @@
     		podaci();
     	 
     		$scope.isOpen = function(){
-    			console.log('open')
+    			
     			shopService.getAll().then(function(response) {
-        			console.log('bilo sta');
+        			
         			
         			$scope.allShop = response.data
         			console.log($scope.allShop[0].naziv)

@@ -21,7 +21,6 @@
 						}
 
 						$scope.editSlog = function() {
-							console.log('from edit put')
 							shopService.put($scope.shop)
 
 							$rootScope.shop = null;

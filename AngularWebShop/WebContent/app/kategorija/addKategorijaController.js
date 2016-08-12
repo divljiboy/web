@@ -1,31 +1,28 @@
 (function(angular) {
 
 	angular.module('webShop').controller(
-			'addProductController',
+			'addKategorijaController',
 			[
 					'$window',
 					'$scope',
 					'$state',
 					'$rootScope',
-					'productsService',
+					'kategorijaService',
 					'$stateParams',
-					'shopService',
 					function($window, $scope, $state, $rootScope,
-							productsService, $stateParams, shopService) {
+							kategorijaService, $stateParams) {
 
 						var podaci = function() {
 
-							shopService.getAll().then(function(response) {
-								$scope.shops = response.data;
+							kategorijaService.getAll().then(function(response) {
+								$scope.selkategorije = response.data;
 
 							});
 						};
 
 						podaci();
 
-						if ($rootScope.drzava == null)
-							$rootScope.drzava = {};
-
+						
 						$scope.addFlag = false;
 
 						if ($stateParams.operacija === "add") {
@@ -34,12 +31,15 @@
 
 						$scope.changedValue = function(selectedValue) {
 							$scope.selectedValue = selectedValue
-							$scope.product.prodavnica = selectedValue
+							$scope.kategorija.nadkategorija = selectedValue;
+							console.log($scope.kategorija.nadkategorija.naziv)
 						};
 
 						$scope.addSlog = function() {
-							productsService.post($scope.product);
-							$state.go('allProducts');
+						
+							kategorijaService.post($scope.kategorija);
+							console.log("posle post-a");
+							$state.go('allKategorija');
 						};
 
 					} ]);

@@ -11,8 +11,7 @@
 					'$stateParams',
 					function($window, $scope, $state, $rootScope,
 							dostavljacService, $stateParams) {
-						console.log('from addDostavljac')
-
+						
 						$scope.addFlag = false;
 
 						if ($stateParams.operacija === "add") {

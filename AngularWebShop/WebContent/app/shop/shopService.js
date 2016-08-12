@@ -11,7 +11,7 @@
                 },
                 put: function (shop)
                     {
-                	console.log('put put')
+                	
                   return $http.put('/AngularWebShop/rest/shop/edit', shop)
                 
                 },

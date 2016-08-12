@@ -1,7 +1,14 @@
 package beans;
 
+import java.io.Serializable;
+
 /** @pdOid 5787a727-924d-402d-8cf7-b541bfd20c0a */
-public class Kategorija {
+public class Kategorija implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3474565776835622370L;
+
 	private int sifra;
 
 	/** @pdOid 8192a5d9-ec5f-4da3-a664-576cfdbf5272 */

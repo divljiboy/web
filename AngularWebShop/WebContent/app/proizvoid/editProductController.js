@@ -31,10 +31,9 @@
 						$scope.changedValue = function(selectedValue) {
 							$scope.selectedValue = selectedValue
 							$scope.product.prodavnica = selectedValue
-							console.log($scope.product);
+							
 						};
 						$scope.editSlog = function() {
-							console.log('from edit put')
 							productsService.put($scope.product)
 
 							 $rootScope.product = null;
