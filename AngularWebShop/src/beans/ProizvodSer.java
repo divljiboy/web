@@ -26,6 +26,7 @@ public class ProizvodSer {
 	      ex.printStackTrace();
 	    }
 	}
+	@SuppressWarnings("unchecked")
 	public List<Proizvod> readData(){
 		FileInputStream fis = null;
 	    ObjectInputStream in = null;

@@ -12,7 +12,7 @@
 		        }
 
 		      
-		      $scope.editProduct = function(){
+		      $scope.editSlog = function(){
 		    	   console.log('from edit put')
 		    	   productsService.put($scope.product)
 		    	   $rootScope.product = null;
