@@ -8,8 +8,8 @@
               url: '/home',
               views: {
                   'navbar': {
-                      templateUrl: 'partials/navbar.html'/*,
-                      controller: 'navbarController'*/
+                      templateUrl: 'partials/navbar.html',
+                      controller: 'navbarController'
                   }
               }
           });

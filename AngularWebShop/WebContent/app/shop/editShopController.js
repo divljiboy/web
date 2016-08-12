@@ -1,7 +1,7 @@
 (function (angular) {
        
     angular.module('webShop')
-    	.controller('editProductController', ['$window','$scope', '$state', '$rootScope', 'productsService', '$stateParams', function ($window,$scope, $state, $rootScope, productsService, $stateParams) {
+    	.controller('editShopController', ['$window','$scope', '$state', '$rootScope', 'shopService', '$stateParams', function ($window,$scope, $state, $rootScope, shopService, $stateParams) {
 		      
 		      
 		      $scope.editFlag = false;
@@ -14,9 +14,9 @@
 		      
 		      $scope.editProduct = function(){
 		    	   console.log('from edit put')
-		    	   productsService.put($scope.product)
+		    	   shopService.put($scope.shop)
 		    	   $rootScope.product = null;
-		    	   $state.go('allProducts')
+		    	   $state.go('allShops')
 		       }
    }]);
 

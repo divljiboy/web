@@ -1,0 +1,78 @@
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Add shop</legend>
+
+<!-- Text input
+<div class="form-group">
+  <label class="col-md-4 control-label" for="ID">ID</label>  
+  <div class="col-md-4">
+  <input id="ID" name="ID" type="text" ng-model="shop.sifra" placeholder="ID" class="form-control input-md" required="">
+    
+  </div>
+</div>
+-->
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Name</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" ng-model="shop.naziv" placeholder="Name" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Address</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" ng-model="shop.adresa" placeholder="Adress" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Country </label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" placeholder="Country" ng-model="shop.drzava" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Phone</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" ng-model="shop.telefon" placeholder="Phone" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Email</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" ng-model="shop.email" placeholder="Email" class="form-control input-md">
+    
+  </div>
+</div>
+
+<div class="form-group" ng-show="editFlag">
+  <label class="col-md-4 control-label" for="button1id"></label>
+  <div class="col-md-8">
+    <button id="button1id" name="button1id" ng-click="editProduct()" class="btn btn-success">OK</button>
+    <button id="cancel" name="cancel" ng-click="cancelProduct()" class="btn btn-danger">Cancel</button>
+  </div>
+</div>
+
+<div class="form-group" ng-show="addFlag">
+  <label class="col-md-4 control-label" for="button1id"></label>
+  <div class="col-md-8">
+    <button id="button1id" name="button1id" ng-click="addShop()" class="btn btn-success">OK</button>
+    <button id="cancel" name="cancel" ng-click="cancelShop()" class="btn btn-danger">Cancel</button>
+  </div>
+</div>
+<div id = "alert_placeholder"></div>
+</fieldset>
+</form>

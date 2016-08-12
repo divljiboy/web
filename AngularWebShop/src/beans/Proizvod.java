@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 /** @pdOid 9ddc6c83-56b1-497b-8cad-54aeb6aa4c07 */
 public class Proizvod implements Serializable {
+
 	/** @pdOid bea497f1-27a0-4a43-a8f6-6343fa499d23 */
 	private int sifra;
 	/** @pdOid 484151a4-f734-419b-ac6a-a9f42b9d7c96 */
@@ -23,36 +24,47 @@ public class Proizvod implements Serializable {
 	private int kolicina;
 	/** @pdOid 5de598aa-cac1-428d-8e0c-50a821f0d439 */
 	private Float ocena;
-	/** @pdOid 153b8797-5d50-4022-921e-8866e28157f7 */
-	// private Image slika;
-	/** @pdOid ea7759f6-8136-4d13-ab42-ff3edc3c4f7f */
-	// private Kategorija kategorija;
+	
+   /** @pdOid 153b8797-5d50-4022-921e-8866e28157f7 */
+   //private Image slika;
+   /** @pdOid ea7759f6-8136-4d13-ab42-ff3edc3c4f7f */
+   //private Kategorija kategorija;
+   private Prodavnica prodavnica;
+   
+   public Prodavnica getProdavnica() {
+	return prodavnica;
+}
 
-	/**
-	 * @pdRoleInfo migr=no name=Recenzija assc=association2 coll=java.util.List
-	 *             impl=java.util.ArrayList mult=0..* side=A
-	 */
 
-	/** @pdOid 037aae77-1680-44bf-b6ef-da57d83a43bc */
-	public int getSifra() {
-		return sifra;
-	}
+public void setProdavnica(Prodavnica prodavnica) {
+	this.prodavnica = prodavnica;
+}
 
-	/**
-	 * @param newSifra
-	 * @pdOid 0a1b4629-a384-4ac3-b875-dc71eb9fd2ae
-	 */
-	public void setSifra(int newSifra) {
-		sifra = newSifra;
-	}
+/** @pdRoleInfo migr=no name=Recenzija assc=association2 coll=java.util.List impl=java.util.ArrayList mult=0..* side=A */
+   public java.util.List<Recenzija> recenzija;
+   
+   /** @pdOid 037aae77-1680-44bf-b6ef-da57d83a43bc */
+   public int getSifra() {
+      return sifra;
+   }
+   
+   /** @param newSifra
+    * @pdOid 0a1b4629-a384-4ac3-b875-dc71eb9fd2ae */
+   public void setSifra(int newSifra) {
+      sifra = newSifra;
+   }
+   
+   
+   public String getNaziv() {
+	return naziv;
+}
 
-	public String getNaziv() {
-		return naziv;
-	}
+public void setNaziv(String naziv) {
+	this.naziv = naziv;
+}
 
-	public void setNaziv(String naziv) {
-		this.naziv = naziv;
-	}
+
+
 
 	
 
@@ -60,56 +72,64 @@ public class Proizvod implements Serializable {
 		return boja;
 	}
 
-	public void setBoja(String boja) {
+public Float getDimenzija() {
+	return dimenzija;
+}
+
+
+
+public void setBoja(String boja) {
 		this.boja = boja;
 	}
 
-	public Float getDimenzija() {
-		return dimenzija;
-	}
+public void setDimenzija(Float dimenzije) {
+	this.dimenzija = dimenzije;
+}
 
-	public void setDimenzija(Float dimenzije) {
-		this.dimenzija = dimenzije;
-	}
 
-	public int getTezina() {
-		return tezina;
-	}
+public int getTezina() {
+	return tezina;
+}
 
-	public void setTezina(int tezina) {
-		this.tezina = tezina;
-	}
+public void setTezina(int tezina) {
+	this.tezina = tezina;
+}
 
-	public String getZemlja() {
-		return zemlja;
-	}
+public String getZemlja() {
+	return zemlja;
+}
 
-	public void setZemlja(String zemlja) {
-		this.zemlja = zemlja;
-	}
+public void setZemlja(String zemlja) {
+	this.zemlja = zemlja;
+}
 
-	public Float getCena() {
-		return cena;
-	}
+public Float getCena() {
+	return cena;
+}
 
-	public void setCena(Float cena) {
-		this.cena = cena;
-	}
+public void setCena(Float cena) {
+	this.cena = cena;
+}
 
-	public int getKolicina() {
-		return kolicina;
-	}
+public int getKolicina() {
+	return kolicina;
+}
 
-	public void setKolicina(int kolicina) {
-		this.kolicina = kolicina;
-	}
+public void setKolicina(int kolicina) {
+	this.kolicina = kolicina;
+}
 
-	public Float getOcena() {
-		return ocena;
-	}
+public Float getOcena() {
+	return ocena;
+}
 
-	public void setOcena(Float ocena) {
-		this.ocena = ocena;
-	}
+public void setOcena(Float ocena) {
+	this.ocena = ocena;
+}
 
+
+/** @pdGenerated default getter */
+   
+   
+  
 }

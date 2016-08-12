@@ -3,10 +3,26 @@
 
     angular.module('webShop').config(['$stateProvider', function ($stateProvider) {
             $stateProvider
-            
-              .state('addShop',
+            	.state('allShops',
+                {
+                    url: '/allShops',
+                    views:
+                    {
+  
+                        'navbar': {
+                            templateUrl: 'partials/navbar.html'
+                         },
+                         'content':{
+                        	 
+                        	 templateUrl: 'app/shop/allShops.html',
+                        	 controller: 'allShopsController'
+                         }
+                         
+                    }
+                })
+                .state('addShop',
             	 {
-            	  	url:'/addShop',
+            	  	url:'/addShop/{operacija}',
             	  	views:
             	  	{
             	  		'navbar':{
@@ -21,6 +37,20 @@
             	
             	  
                  })
+                 .state('editShop',{
+                  	   url:'/editShop/{operacija}',
+                  	  	views:
+                  	  	{
+                  	  		'navbar':{
+                  	  			templateUrl: 'partials/navbar.html'
+                  	  		},
+                  	  		'content':{
+                  	  			templateUrl: 'app/shop/addShop.html',
+                  	  			controller: 'editShopController'
+                  	  		}
+                  	  		
+                  	  	}
+                     })
                     
    
                 }]);
