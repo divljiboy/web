@@ -9,9 +9,10 @@
 					'$rootScope',
 					'shopService',
 					'productsService',
+					'shoppingCartService',
 					'$stateParams',
 					function($window, $scope, $state, $rootScope, shopService,
-							productsService, $stateParams) {
+							productsService,shoppingCartService, $stateParams) {
 
 						var podaci = function() {
 
@@ -27,10 +28,19 @@
 
 								
 								$scope.allProducts = response.data
+								console.log($scope.allProducts)
 								
-
 							});
 						};
+						
+						$scope.addToShoppingCart = function(product,kolicina){
+			    			
+			    			console.log(product.naziv)
+			    			console.log(kolicina)
+			    			shoppingCartService.post(product,kolicina).then(function(response) {	
+			        			
+			    			});
+			    		}
 					 podaci()
 						
 

@@ -39,6 +39,24 @@
                          
                     }
                 })
+                .state('shoppingCart',
+                {
+                    url: '/shoppingCart',
+                    views:
+                    {
+  
+                        'navbar': {
+                            templateUrl: 'partials/navbar.html'
+                            
+                         },
+                         'content':{
+                        	 templateUrl: 'app/shoppingCart/shoppingCart.html',
+                        	 controller: 'shoppingCartController' 
+                        	 
+                         }
+                         
+                    }
+                })
    
                 }]);
 })(angular);

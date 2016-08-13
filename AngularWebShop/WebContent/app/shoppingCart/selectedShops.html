@@ -1,45 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Shop Homepage - Start Bootstrap Template</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/shop-homepage.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body>
-
-    
-    
-    <!-- Page Content -->
+<!-- Page Content -->
     <div class="container">
 
         <div class="row">
 
             <div class="col-md-3">
                 <p class="lead">Shop Name</p>
+                
+                 <a href="/#" class="list-group-item">{{shop.naziv}}</a>
                 <div ng-repeat="shop in allShops" class="list-group">
-                    <a ui-sref="selectShop({shop:'{{shop.naziv}}'})" class="list-group-item">{{shop.naziv}}</a>
+                    <a ui-sref="selectShop({shop : '{{shop.naziv }}' })" class="btn btn-success">{{shop.naziv}}</a>
                 </div>
+                	 
             </div>
 
             <div class="col-md-9">
@@ -51,11 +22,24 @@
                         <div class="thumbnail">
                             <img src="http://placehold.it/320x150" alt="">
                             <div class="caption">
-                                <h4 class="pull-right">$24.99</h4>
+                                <h4 class="pull-right">${{product.cena}}</h4>
                                 <h4><a href="#">{{product.naziv}}</a>
                                 </h4>
-                                <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
+                                
                             </div>
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="textinput">Dodaj</label>  
+							  <div class="col-md-4">
+							  <input id="textinput" name="textinput" ng-model="kolicina" type="text" placeholder="Kolicina" class="form-control input-md">
+							    
+							  </div>
+						
+							  <label class="col-md-4 control-label" for="singlebutton"></label>
+							  <div class="col-md-4">
+							    <button id="singlebutton" ng-click="addToShoppingCart(product,kolicina)" name="singlebutton" class="btn btn-success">Kupi</button>
+							  </div>
+							</div>
+											
                             <div class="ratings">
                                 <p class="pull-right">15 reviews</p>
                                 <p>
@@ -81,7 +65,7 @@
 
     </div>
     <!-- /.container -->
-
+	
     <div class="container">
 
         <hr>
@@ -104,6 +88,4 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
-</body>
 
-</html>

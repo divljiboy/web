@@ -13,7 +13,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
 
 import beans.ShopSer;
 import beans.Prodavnica;
@@ -32,16 +33,16 @@ public class ShopService {
 	
 	
 	@POST
-	@Path("/add")
+	@Path("/addShop")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String add(Prodavnica p) {
+	public ResponseBuilder add(Prodavnica p) {
 		List<Prodavnica> trenutna=getShops();
 		
 		for(int i = 0;i < trenutna.size(); i++){
 			
 			if(trenutna.get(i).getNaziv().equals(p.getNaziv())){
-				return "error";
+				return Response.status(404);
 			}
 		}
 		
@@ -54,11 +55,11 @@ public class ShopService {
 		trenutna.add(p);
 		ctx.setAttribute("shopovi", trenutna);
 		shop.serijalizuj(trenutna);
-		return "OK";
+		return Response.status(200);
 	}
 	
 	@GET
-	@Path("/get")
+	@Path("/getShop")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public List<Prodavnica> getProdavnica(){
@@ -67,12 +68,13 @@ public class ShopService {
 	}
 	
 	@POST
-	@Path("/delete/{id}")
+	@Path("/deleteShop/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String delete(@PathParam("id") int sifra) {
+	public ResponseBuilder delete(@PathParam("id") int sifra) {
 		List<Prodavnica> trenutna=getProdavnica();
-		System.out.println(trenutna.size());
+		int a= trenutna.size();
+		
 		for(int i=0;i<=trenutna.size()-1;i++)
 		{
 			if(trenutna.get(i).getSifra()==sifra)
@@ -81,20 +83,28 @@ public class ShopService {
 				break;
 			}
 		}
-		System.out.println(trenutna.size());
+		int b= trenutna.size();
+		
 		ctx.setAttribute("shopovi", trenutna);
 		shop.serijalizuj(trenutna);
 		
-		return "ok";
+		if(a>b)
+		{
+			return Response.status(200);
+		}else
+		{
+			return Response.status(404);
+			
+		}
 	}
 
 	
 	
 	@PUT
-	@Path("/edit")
+	@Path("/editShop")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String putProizvod(Prodavnica p){
+	public ResponseBuilder putProizvod(Prodavnica p){
 		System.out.println(p.getSifra());
 		List<Prodavnica> trenutna=getProdavnica();
 	   for(int i=0;i<trenutna.size();i++){
@@ -109,7 +119,7 @@ public class ShopService {
 	   ctx.setAttribute("shopovi", shop.getLista());
 		
 	   
-	  return "ok";
+	   return Response.status(200);
 	}
 	private List<Prodavnica> getShops() {
 		shop = new ShopSer();
