@@ -1,0 +1,39 @@
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+     
+      <th>#</th>
+      <th>Cena</th>
+      <th>Kolicina</th>
+      <th>Proizvod</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="x in sveKupljeno">
+     <td></td>
+      <td>{{x.cena}}</td>
+      <td>{{x.kolicina}}</td>
+      <td>{{x.proizvod.naziv}}</td>
+      <td><button type="button" class="btn btn-danger" ng-click="ponistiKupovinu(x.sifra)">Ponisti kupovinu</button></td>
+    </tr>
+    
+ 	
+    <div class="form-group">
+    <label class="col-md-4 control-label" for="button1id"><h2>Ukupno: {{zaPlacanje}}</h2> </label>
+  	<div class="col-md-8">
+    <button id="button1id" name="button1id" class="btn btn-success" is-disabled="isWaiting" ng-click="kupi()">Plati ako imas</button>
+			
+			<div class="col-xs-2">
+				<select   id="selectbasic" name="selectbasic" class="form-control"
+					ng-model="dostavaSelected" ng-change="changedValue(dostavaSelected)"
+					data-ng-options="dostava.naziv for dostava in dostavljaci"
+					class="form-control" >
+					
+				</select>
+			</div>
+		</div>
+		
+		
+		
+		
+		
