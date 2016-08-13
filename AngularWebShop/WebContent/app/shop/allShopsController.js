@@ -17,7 +17,6 @@ angular
 							var podaci = function() {
 								shopService.getAll().then(function(response) {
 
-									console.log('allShops')
 									$scope.gridOptions.data = response.data;
 								});
 							};

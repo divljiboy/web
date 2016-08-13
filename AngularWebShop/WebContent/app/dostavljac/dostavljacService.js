@@ -8,16 +8,16 @@
             return {
                 getAll: function () {
                     
-                  return $http.get('/AngularWebShop/rest/dostavljac/get');
+                  return $http.get('/AngularWebShop/rest/dostavljac/getDostavljac');
                 },
                 put: function (product)
                     {
                 	
-                  return $http.put('/AngularWebShop/rest/dostavljac/edit', product)
+                  return $http.put('/AngularWebShop/rest/dostavljac/editDostavljac', product)
                 
                 },
                 post: function (product) {
-                    	$http.post('/AngularWebShop/rest/dostavljac/add', product).success(function(data) {
+                    	$http.post('/AngularWebShop/rest/dostavljac/addDostavljac', product).success(function(data) {
       		    		  
  		    			  return data;
                     });
@@ -27,7 +27,7 @@
                 deleteSlog : function(bla)
                 {
                 
-                  return  $http.post('/AngularWebShop/rest/dostavljac/delete/'+bla);
+                  return  $http.post('/AngularWebShop/rest/dostavljac/deleteDostavljac/'+bla);
                    
                 }
             }

@@ -1,21 +1,21 @@
 (function () {
 
     angular.module('webShop')
-        .service('productsService', ['$http', function ($http) {
+        .service('recenzijaService', ['$http', function ($http) {
             //metode servisa
             return {
                 getAll: function () {
                     
-                  return $http.get('http://localhost:8080/AngularWebShop/rest/product/getProizvod');
+                  return $http.get('http://localhost:8080/AngularWebShop/rest/recenzija/getRecenzija');
                 },
                 put: function (product)
                     {
                 	
-                 return $http.put('http://localhost:8080/AngularWebShop/rest/product/editProizvod', product)
+                 return $http.put('http://localhost:8080/AngularWebShop/rest/recenzija/editRecenzija', product)
                 
                 },
                 post: function (product) {
-                    	$http.post('http://localhost:8080/AngularWebShop/rest/product/addProizvod', product).success(function(data) {
+                    	$http.post('http://localhost:8080/AngularWebShop/rest/recenzija/addRecenzija', product).success(function(data) {
         		    		  
    		    			  return data;
                       });
@@ -24,12 +24,12 @@
                 deleteSlog : function(bla)
                 {
                 
-                 return $http.post('http://localhost:8080/AngularWebShop/rest/product/deleteProizvod/'+bla);
+                 return $http.post('http://localhost:8080/AngularWebShop/rest/recenzija/deleteRecenzija/'+bla);
                    
                 }
                 ,getProductByShop : function (shopName)
                 {	
-                	return $http.get('http://localhost:8080/AngularWebShop/rest/product/getProductByShop/'+shopName)
+                	return $http.get('http://localhost:8080/AngularWebShop/rest/recenzija/getRecenzijaByProduct/'+shopName)
                 }
             }
 

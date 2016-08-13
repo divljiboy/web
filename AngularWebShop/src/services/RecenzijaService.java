@@ -19,30 +19,31 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 
 import beans.Proizvod;
 import beans.ProizvodSer;
+import beans.Recenzija;
+import beans.RecenzijaSer;
 
-@Path("/product")
-public class ProizvodiService {
-
+@Path("/recenzija")
+public class RecenzijaService {
 	
+
 	@Context
 	HttpServletRequest request;
 	@Context
 	ServletContext ctx;
 	
-	ProizvodSer proizvodi;
+	RecenzijaSer recenzije;
 	
 	
 	@POST
-	@Path("/addProizvod")
+	@Path("/addRecenzija")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response add(Proizvod p) {
-		List<Proizvod> trenutna=getProducts();
+	public Response add(Recenzija p) {
+		List<Recenzija> trenutna=getData();
 		
-		System.out.println(p.getProdavnica().getNaziv());
 		for(int i = 0;i < trenutna.size(); i++){
 			
-			if(trenutna.get(i).getNaziv().equals(p.getNaziv()) ){
+			if(trenutna.get(i).getSifra()==(p.getSifra()) ){
 				return Response.status(404).build();
 			}
 		}
@@ -59,41 +60,40 @@ public class ProizvodiService {
 		
 		
 		
-		ctx.setAttribute("proizvodi", trenutna);
-		proizvodi.serijalizuj(trenutna);
+		ctx.setAttribute("recenzije", trenutna);
+		recenzije.serijalizuj(trenutna);
 		return Response.ok().build();
 		
 	}
 	@GET
-	@Path("/getProizvod")
+	@Path("/getRecenzija")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public List<Proizvod> getProizvodi(){
-		return getProducts();
+	public List<Recenzija> getRecenzije(){
+		return getData();
 		
 	}
 	@GET
-	@Path("/getProductByShop/{shopName}")
+	@Path("/getRecenzijaByProduct/{proizvod}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public List<Proizvod> getProizvodiByShop(@PathParam("shopName") String shopName){
-		ArrayList<Proizvod> allProductByShop = new ArrayList<Proizvod>() ;
-		for(int i =0; i < getProducts().size();i++){
+	public List<Recenzija> getRecenzijaByProduct(@PathParam("proizvod") String proizvod){
+		ArrayList<Recenzija> listaproizvoda = new ArrayList<Recenzija>() ;
+		for(int i =0; i < getData().size();i++){
 			
-			if(getProducts().get(i).getProdavnica().getNaziv().equals(shopName)){
-				System.out.println("idemo");
-				allProductByShop.add(getProducts().get(i));
+			if(getData().get(i).getProizvod().getNaziv().equals(proizvod)){
+				listaproizvoda.add(getData().get(i));
 			}
 		}
-		return allProductByShop;
+		return listaproizvoda;
 		
 	}
 	@POST
-	@Path("/deleteProizvod/{id}")
+	@Path("/deleteRecenzija/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response delete(@PathParam("id") int sifra) {
-		List<Proizvod> trenutna=getProducts();
+		List<Recenzija> trenutna=getData();
 		int a= trenutna.size();
 		
 		for(int i=0;i<trenutna.size();i++)
@@ -105,8 +105,8 @@ public class ProizvodiService {
 			}
 		}
 		System.out.println(trenutna.size());
-		ctx.setAttribute("proizvodi", trenutna);
-		proizvodi.serijalizuj(trenutna);
+		ctx.setAttribute("recenzije", trenutna);
+		recenzije.serijalizuj(trenutna);
 		int b= trenutna.size();
 		
 		
@@ -121,39 +121,39 @@ public class ProizvodiService {
 		
 		
 		
-	};
+	}
 
 
 	
 	
 	
 	@PUT
-	@Path("/editProizvod")
+	@Path("/editRecenzija")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response putProizvod(Proizvod p){
+	public Response putRecenzija(Recenzija p){
 		System.out.println(p.getSifra());
-		List<Proizvod> trenutna=getProducts();
-	   for(int i=0;i<getProducts().size();i++){
+		List<Recenzija> trenutna=getData();
+	   for(int i=0;i<getData().size();i++){
 		  
-		  if(getProducts().get(i).getSifra() == p.getSifra()){
+		  if(getData().get(i).getSifra() == p.getSifra()){
 			  System.out.println("from loop " + p.getSifra()); 
 			  trenutna.set(i, p);break;
 			  
 		  }
 	   }
-	   proizvodi.serijalizuj(trenutna);
-	   ctx.setAttribute("proizvodi", proizvodi.getLista());
+	   recenzije.serijalizuj(trenutna);
+	   ctx.setAttribute("recenzije", recenzije.getLista());
 		
 	   return Response.status(200).build();
 	  
 	}
 	
-	private List<Proizvod> getProducts() {
-		proizvodi= new ProizvodSer();
-		ctx.setAttribute("proizvodi", proizvodi.getLista());
+	private List<Recenzija> getData() {
+		recenzije= new RecenzijaSer();
+		ctx.setAttribute("recenzije", recenzije.getLista());
 	
-		return   proizvodi.getLista();
+		return   recenzije.getLista();
 	}
 	
 

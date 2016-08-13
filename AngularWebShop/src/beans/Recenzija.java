@@ -1,5 +1,6 @@
 package beans;
 
+import java.io.Serializable;
 /***********************************************************************
  * Module:  Recenzija.java
  * Author:  Home
@@ -8,8 +9,12 @@ package beans;
 import java.util.Date;
 
 /** @pdOid 53159b44-31bd-41dc-a58a-436b76ded788 */
-public class Recenzija {
-   /** @pdOid 327e94ee-b40a-4dfd-8b6e-3b5ab3fdafc4 */
+public class Recenzija implements Serializable {
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6157485165048248821L;
+/** @pdOid 327e94ee-b40a-4dfd-8b6e-3b5ab3fdafc4 */
    private int sifra;
    /** @pdOid a1eae3ba-f57f-49b2-bbc9-148e87961503 */
    private Date datum;
@@ -18,11 +23,35 @@ public class Recenzija {
    /** @pdOid 7f40344e-e52e-430f-87ee-9545da001db1 */
    private String komentar;
    /** @pdOid 6f3d1f3a-7c6f-4c65-923c-33e36e48938b */
-   private Korisnik korsnik;
+   //private Korisnik korsnik;
    
    private Proizvod proizvod;
    
-   /** @pdOid 081168d5-848e-4004-9656-b6f0a62b9619 */
+   public Date getDatum() {
+	return datum;
+}
+
+public void setDatum(Date datum) {
+	this.datum = datum;
+}
+
+public Float getOcena() {
+	return ocena;
+}
+
+public void setOcena(Float ocena) {
+	this.ocena = ocena;
+}
+
+public Proizvod getProizvod() {
+	return proizvod;
+}
+
+public void setProizvod(Proizvod proizvod) {
+	this.proizvod = proizvod;
+}
+
+/** @pdOid 081168d5-848e-4004-9656-b6f0a62b9619 */
    public String getKomentar() {
       return komentar;
    }

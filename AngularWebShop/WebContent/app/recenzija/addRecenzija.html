@@ -1,0 +1,97 @@
+<form class="form-horizontal">
+	<fieldset>
+
+		<!-- Form Name -->
+		<legend>Form Name</legend>
+
+
+
+
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="selectbasic">Select
+				proizvod</label>
+			<div class="col-md-4">
+				<select ng-init="proizSelected=mojprod" id="selectbasic" name="selectbasic" class="form-control"
+					ng-model="proizSelected" ng-change="changedValue(proizSelected)"
+					data-ng-options="kat.naziv for kat in proizvodii"
+					class="form-control">
+
+				</select>
+			</div>
+		</div>
+
+		<div class="col-md-6">
+			<p class="input-group">
+				<input type="text" ng-init="recenzija.datum=mojInit" class="form-control" uib-datepicker-popup
+					ng-model="recenzija.datum" is-open="popup2.opened"
+					datepicker-options="dateOptions" ng-required="true"
+					close-text="Close" ui-date/> <span class="input-group-btn">
+					<button type="button" class="btn btn-default" ng-click="open2()">
+						<i class="glyphicon glyphicon-calendar"></i>
+					</button>
+				</span>
+			</p>
+		</div>
+
+
+		<div>
+			<button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
+			<button type="button" class="btn btn-sm btn-default"
+				ng-click="setDate(2009, 7, 24)">2009-08-24</button>
+			<button type="button" class="btn btn-sm btn-danger"
+				ng-click="clear()">Clear</button>
+
+		</div>
+		</br>
+		<div>
+			<span uib-rating ng-model="recenzija.ocena" max="max" read-only="isReadonly"
+				on-hover="hoveringOver(value)" on-leave="overStar = null"
+				titles="['one','two','three']" aria-labelledby="default-rating"></span>
+			<span class="label"
+				ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}"
+				ng-show="overStar && !isReadonly">{{percent}}%</span>
+
+			<button type="button" class="btn btn-sm btn-danger"
+				ng-click="recenzija.ocena = 0" ng-disabled="isReadonly">Clear</button>
+		</div>
+
+		<!-- Textarea -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="komentar">Komentar</label>
+			<div class="col-md-4">
+				<textarea ng-model="recenzija.komentar" class="form-control"
+					id="komentar" name="komentar">Ostavite vas komentar ovde...</textarea>
+			</div>
+		</div>
+
+		<div class="form-group" ng-show="editFlag">
+			<label class="col-md-4 control-label" for="button1id"></label>
+			<div class="col-md-8">
+				<button id="button1id" name="button1id" ng-click="editSlog()"
+					class="btn btn-success">OK</button>
+				<button id="cancel" name="cancel" ng-click="cancelSlog()"
+					class="btn btn-danger">Cancel</button>
+			</div>
+		</div>
+
+		<div class="form-group" ng-show="addFlag">
+			<label class="col-md-4 control-label" for="button1id"></label>
+			<div class="col-md-8">
+				<button id="button1id" name="button1id" ng-click="addSlog()"
+					class="btn btn-success">OK</button>
+				<button id="cancel" name="cancel" ng-click="cancelSlog()"
+					class="btn btn-danger">Cancel</button>
+			</div>
+		</div>
+
+
+
+
+	</fieldset>
+</form>
+
+
+
+
+
+
