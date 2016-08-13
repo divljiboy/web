@@ -32,13 +32,11 @@
 						$scope.changedValue = function(selectedValue) {
 							$scope.selectedValue = selectedValue
 							$scope.kategorija.nadkategorija = selectedValue;
-							console.log($scope.kategorija.nadkategorija.naziv)
 						};
 
 						$scope.addSlog = function() {
 						
 							kategorijaService.post($scope.kategorija);
-							console.log("posle post-a");
 							$state.go('allKategorija');
 						};
 

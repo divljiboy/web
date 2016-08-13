@@ -7,13 +7,11 @@
     			productsService.getAll().then(function(response) {	
     			
     			$scope.allProducts = response.data
-    			console.log(response.data);
     			
     	    	});
     			shopService.getAll().then(function(response) {	
         			
         			$scope.allShops = response.data
-        			console.log(response.data);
         			
         	    	});
     		};

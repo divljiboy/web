@@ -6,23 +6,23 @@
             return {
                 getAll: function () {
                     
-                  return $http.get('/AngularWebShop/rest/shop/get')
+                  return $http.get('/AngularWebShop/rest/shop/getShop')
                   
                 },
                 put: function (shop)
                     {
                 	
-                  return $http.put('/AngularWebShop/rest/shop/edit', shop)
+                  return $http.put('/AngularWebShop/rest/shop/editShop', shop)
                 
                 },
                 post: function (shop) {
-                    	$http.post('/AngularWebShop/rest/shop/add', shop)
+                    	$http.post('/AngularWebShop/rest/shop/addShop', shop)
                     	
                 },
                 deleteSlog : function(bla)
                 {
                 
-                  return  $http.post('/AngularWebShop/rest/shop/delete/'+bla);
+                  return  $http.post('/AngularWebShop/rest/shop/deleteShop/'+bla);
                    
                 }
             }

@@ -35,7 +35,6 @@
 
 
 						$scope.editSlog = function() {
-							console.log($scope.kategorija)
 							kategorijaService.put($scope.kategorija)
 
 							 $rootScope.kategorija = null;

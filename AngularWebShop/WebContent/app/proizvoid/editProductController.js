@@ -28,6 +28,8 @@
 							});
 						};
 						podaci();
+						
+					
 						if ($stateParams.operacija === "edit") {
 							$scope.editFlag = true;
 

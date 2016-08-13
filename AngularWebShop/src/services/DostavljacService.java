@@ -13,6 +13,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
 
 import beans.Dostavljac;
 import beans.DostavljacSer;
@@ -28,16 +30,16 @@ public class DostavljacService {
 	DostavljacSer dostavljaci;
 
 	@POST
-	@Path("/add")
+	@Path("/addDostavljac")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String add(Dostavljac p) {
+	public Response add(Dostavljac p) {
 		List<Dostavljac> trenutna = getProducts();
 
 		for (int i = 0; i < trenutna.size(); i++) {
 
 			if (trenutna.get(i).getNaziv().equals(p.getNaziv())) {
-				return "error";
+				return Response.status(404).build();
 			}
 		}
 		if (trenutna.size() == 0) {
@@ -50,11 +52,12 @@ public class DostavljacService {
 
 		ctx.setAttribute("dostavljaci", trenutna);
 		dostavljaci.serijalizuj(trenutna);
-		return "OK";
+		return Response.status(200).build();
+		
 	}
 
 	@GET
-	@Path("/get")
+	@Path("/getDostavljac")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public List<Dostavljac> getDostavljaci() {
@@ -63,45 +66,57 @@ public class DostavljacService {
 	}
 
 	@POST
-	@Path("/delete/{id}")
+	@Path("/deleteDostavljac/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String delete(@PathParam("id") int sifra) {
+	public Response delete(@PathParam("id") int sifra) {
 		List<Dostavljac> trenutna = getProducts();
 		System.out.println(trenutna.size());
+		int a= trenutna.size();
 		for (int i = 0; i < trenutna.size(); i++) {
 			if (trenutna.get(i).getSifra() == sifra) {
 				trenutna.remove(i);
 				break;
 			}
 		}
+		int b= trenutna.size();
+		
 		System.out.println(trenutna.size());
 		ctx.setAttribute("dostavljaci", trenutna);
 		dostavljaci.serijalizuj(trenutna);
+		if(a>b)
+		{
+			return Response.status(200).build();
+		}else
+		{
+			return Response.status(404).build();
+			
+		}
+		
 
-		return "ok";
+		
 	}
 
 	@PUT
-	@Path("/edit")
+	@Path("/editDostavljac")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String putDostavljac(Dostavljac p) {
-		System.out.println(p.getSifra());
+	public Response putDostavljac(Dostavljac p) {
 		List<Dostavljac> trenutna = getProducts();
 		for (int i = 0; i < getProducts().size(); i++) {
 
 			if (getProducts().get(i).getSifra() == p.getSifra()) {
-				System.out.println("from loop " + p.getSifra());
 				trenutna.set(i, p);
 				break;
+				
 
 			}
 		}
+		
 		dostavljaci.serijalizuj(trenutna);
 		ctx.setAttribute("dostavljaci", dostavljaci.getLista());
 
-		return "ok";
+		return Response.status(200).build();
 	}
 
 	private List<Dostavljac> getProducts() {

@@ -6,16 +6,16 @@
             return {
                 getAll: function () {
                     
-                  return $http.get('/AngularWebShop/rest/kategorija/get');
+                  return $http.get('/AngularWebShop/rest/kategorija/getKategorija');
                 },
                 put: function (product)
                     {
                 	
-                  return $http.put('/AngularWebShop/rest/kategorija/edit', product)
+                  return $http.put('/AngularWebShop/rest/kategorija/editKategorija', product)
                 
                 },
                 post: function (product) {
-                    	$http.post('/AngularWebShop/rest/kategorija/add', product).then(function(data) {
+                    	$http.post('/AngularWebShop/rest/kategorija/addKategorija', product).then(function(data) {
       		    		  
  		    			  return data;
                     });
@@ -25,7 +25,7 @@
                 deleteSlog : function(bla)
                 {
                 
-                  return  $http.post('/AngularWebShop/rest/kategorija/delete/'+bla);
+                  return  $http.post('/AngularWebShop/rest/kategorija/deleteKategorija/'+bla);
                    
                 }
             }

@@ -12,6 +12,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import com.sun.xml.internal.ws.client.sei.ResponseBuilder;
 
 import beans.Product;
 import beans.ProductToAdd;
@@ -41,15 +44,16 @@ public class ProductService {
 		return getProducts().getValues();
 	}
 	
+	
 	@POST
-	@Path("/add")
+	@Path("/addProizvod")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String add(ProductToAdd p) {
+	public Response add(ProductToAdd p) {
 		getShoppingCart().addItem(getProducts().getProduct(p.id), p.count);
 		System.out.println("Product " + getProducts().getProduct(p.id)
 				+ " added with count: " + p.count);
-		return "OK";
+		return Response.ok().build();
 	}
 
 	@GET
