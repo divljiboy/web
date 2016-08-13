@@ -30,8 +30,29 @@ public class Proizvod implements Serializable {
    /** @pdOid ea7759f6-8136-4d13-ab42-ff3edc3c4f7f */
    //private Kategorija kategorija;
    private Prodavnica prodavnica;
+   private Kategorija kategorija;
    
-   public Prodavnica getProdavnica() {
+   public Kategorija getKategorija() {
+	return kategorija;
+}
+
+
+public void setKategorija(Kategorija kategorija) {
+	this.kategorija = kategorija;
+}
+
+
+public java.util.List<Recenzija> getRecenzija() {
+	return recenzija;
+}
+
+
+public void setRecenzija(java.util.List<Recenzija> recenzija) {
+	this.recenzija = recenzija;
+}
+
+
+public Prodavnica getProdavnica() {
 	return prodavnica;
 }
 

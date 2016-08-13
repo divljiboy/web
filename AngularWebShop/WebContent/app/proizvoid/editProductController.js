@@ -8,9 +8,9 @@
 					'$state',
 					'$rootScope',
 					'productsService',
-					'$stateParams','shopService',
+					'$stateParams','shopService','kategorijaService',
 					function($window, $scope, $state, $rootScope,
-							productsService, $stateParams,shopService) {
+							productsService, $stateParams,shopService,kategorijaService) {
 						$scope.gridOptions = {};
 						$scope.selektovani=$rootScope.product.prodavnica;
 						$scope.editFlag = false;
@@ -19,6 +19,11 @@
 
 							shopService.getAll().then(function(response) {
 								$scope.shops = response.data;
+
+							});
+							kategorijaService.getAll().then(function(response) {
+								$scope.kategorijee= response.data;
+								
 
 							});
 						};
@@ -32,6 +37,10 @@
 							$scope.selectedValue = selectedValue
 							$scope.product.prodavnica = selectedValue
 							
+						};
+						$scope.changedValue2 = function(selectedValue2) {
+							$scope.selectedValue2 = selectedValue2
+							$scope.product.kategorija = selectedValue2
 						};
 						$scope.editSlog = function() {
 							productsService.put($scope.product)

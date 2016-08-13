@@ -21,7 +21,7 @@ public class Prodavnica implements Serializable{
    /** @pdOid 06a758c2-c809-4079-b1c0-e27c3e677b6e */
    private Float ocena;
    
-   /** @pdOid 5f3a7cdd-78c2-4782-8d6a-2022a95ed1ba */
+/** @pdOid 5f3a7cdd-78c2-4782-8d6a-2022a95ed1ba */
    public Float getOcena() {
       return ocena;
    }

@@ -68,6 +68,8 @@
 									name : 'ocena'
 								}, {
 									name : 'prodavnica.naziv'
+								}, {
+									name : 'kategorija.naziv'
 								} ];
 
 								$scope.gridOptions.multiSelect = false;
@@ -90,7 +92,8 @@
 														$scope.selektovaniSlog.kolicina = row.entity.kolicina;
 														$scope.selektovaniSlog.ocena = row.entity.ocena;
 														$scope.selektovaniSlog.prodavnica = row.entity.prodavnica;
-														
+														$scope.selektovaniSlog.kategorija = row.entity.kategorija;
+
 													});
 								};
 

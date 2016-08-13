@@ -18,7 +18,7 @@ public class ProizvodSer {
 		FileInputStream fis = null;
 	    ObjectInputStream in = null;
 	    try {
-	      fis = new FileInputStream("./izvestaj.ser");
+	      fis = new FileInputStream("./proizvodi.ser");
 	      in = new ObjectInputStream(fis);
 	      lista = (List<Proizvod>) in.readObject();
 	      in.close();
@@ -30,7 +30,7 @@ public class ProizvodSer {
 		FileInputStream fis = null;
 	    ObjectInputStream in = null;
 	    try {
-	      fis = new FileInputStream("./izvestaj.ser");
+	      fis = new FileInputStream("./proizvodi.ser");
 	      in = new ObjectInputStream(fis);
 	      lista = (List<Proizvod>) in.readObject();
 	      in.close();
@@ -51,7 +51,7 @@ public class ProizvodSer {
 
 
 	public void serijalizuj(List<Proizvod> trenutna) {
-		String filename = "./izvestaj.ser";
+		String filename = "./proizvodi.ser";
 	    FileOutputStream fos = null;
 	    ObjectOutputStream out = null;
 	    
