@@ -10,7 +10,8 @@
                     {
   
                         'navbar': {
-                            templateUrl: 'partials/navbar.html'
+                            templateUrl: 'partials/navbar.html',
+                            controller : 'navbarController'
                             
                          },
                          'content':{
@@ -28,7 +29,8 @@
                     {
   
                         'navbar': {
-                            templateUrl: 'partials/navbar.html'
+                            templateUrl: 'partials/navbar.html',
+                            controller : 'navbarController'
                             
                          },
                          'content':{
@@ -46,7 +48,8 @@
                     {
   
                         'navbar': {
-                            templateUrl: 'partials/navbar.html'
+                            templateUrl: 'partials/navbar.html',
+                            controller : 'navbarController'
                             
                          },
                          'content':{

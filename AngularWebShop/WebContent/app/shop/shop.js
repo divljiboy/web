@@ -10,7 +10,8 @@
                     {
   
                         'navbar': {
-                            templateUrl: 'partials/navbar.html'
+                            templateUrl: 'partials/navbar.html',
+                            controller : 'navbarController'
                             
                          },
                          'content':{
@@ -27,7 +28,8 @@
             	  	views:
             	  	{
             	  		'navbar':{
-            	  			templateUrl: 'partials/navbar.html'
+            	  			templateUrl: 'partials/navbar.html',
+                            controller : 'navbarController'
             	  		},
             	  		'content':{
             	  			templateUrl: 'app/shop/addShop.html',
@@ -43,7 +45,8 @@
                   	  	views:
                   	  	{
                   	  		'navbar':{
-                  	  			templateUrl: 'partials/navbar.html'
+                  	  			templateUrl: 'partials/navbar.html',
+                                controller : 'navbarController'
                               
                   	  		},
                   	  		'content':{
