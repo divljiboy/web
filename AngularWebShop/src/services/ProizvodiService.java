@@ -15,7 +15,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.ResponseBuilder;
 
 import beans.Proizvod;
 import beans.ProizvodSer;
@@ -69,6 +68,7 @@ public class ProizvodiService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public List<Proizvod> getProizvodi(){
+		System.out.println("upao sam u backend");
 		return getProducts();
 		
 	}

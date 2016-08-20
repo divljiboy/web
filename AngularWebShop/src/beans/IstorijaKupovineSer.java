@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IstorijaKupovineSer {
-	private ArrayList<ArrayList<Kupovina>> lista = new ArrayList<ArrayList<Kupovina>>();
+	private ArrayList<IstorijaKupovine> lista = new ArrayList<IstorijaKupovine>();
 	    
 		@SuppressWarnings("unchecked")
 		public IstorijaKupovineSer(){
@@ -17,19 +17,19 @@ public class IstorijaKupovineSer {
 		    try {
 		      fis = new FileInputStream("./istorija.ser");
 		      in = new ObjectInputStream(fis);
-		      lista = (ArrayList<ArrayList<Kupovina>>) in.readObject();
+		      lista = (ArrayList<IstorijaKupovine>) in.readObject();
 		      in.close();
 		    } catch (Exception ex) {
 		      ex.printStackTrace();
 		    }
 		}
-		public ArrayList<ArrayList<Kupovina>> readData(){
+		public ArrayList<IstorijaKupovine> readData(){
 			FileInputStream fis = null;
 		    ObjectInputStream in = null;
 		    try {
 		      fis = new FileInputStream("./istorija.ser");
 		      in = new ObjectInputStream(fis);
-		      lista = (ArrayList<ArrayList<Kupovina>>) in.readObject();
+		      lista = (ArrayList<IstorijaKupovine>) in.readObject();
 		      in.close();
 		    } catch (Exception ex) {
 		      ex.printStackTrace();
@@ -38,16 +38,16 @@ public class IstorijaKupovineSer {
 			
 		}
 
-		public ArrayList<ArrayList<Kupovina>> getLista() {
+		public ArrayList<IstorijaKupovine> getLista() {
 			return lista;
 		}
 
-		public void setLista(ArrayList<ArrayList<Kupovina>> lista) {
+		public void setLista(ArrayList<IstorijaKupovine> lista) {
 			this.lista = lista;
 		}
 
 
-		public void serijalizuj(ArrayList<ArrayList<Kupovina>> trenutna) {
+		public void serijalizuj(ArrayList<IstorijaKupovine> trenutna) {
 			String filename = "./istorija.ser";
 		    FileOutputStream fos = null;
 		    ObjectOutputStream out = null;

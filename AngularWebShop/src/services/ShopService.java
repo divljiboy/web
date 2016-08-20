@@ -121,6 +121,7 @@ public class ShopService {
 	   
 	   return Response.status(200);
 	}
+	
 	private List<Prodavnica> getShops() {
 		shop = new ShopSer();
 		ctx.setAttribute("shop", shop.getLista());

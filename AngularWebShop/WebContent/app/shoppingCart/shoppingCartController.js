@@ -12,12 +12,13 @@
 					'shoppingCartService',
 					'dostavljacService',
 					'$stateParams',
+					'$localStorage',
 					function($window, $scope, $state, $rootScope, shopService,
-							productsService,shoppingCartService,dostavljacService, $stateParams) {
+							productsService,shoppingCartService,dostavljacService, $stateParams,$localStorage) {
 
 						var podaci = function() {
 							$scope.isWaiting = false
-							shoppingCartService.getAll().then(function(response){
+							shoppingCartService.getAll($localStorage.currentUser).then(function(response){
 								console.log(response.data)
 								$scope.sveKupljeno = response.data
 								var zaPlacanje = 0;
@@ -34,19 +35,39 @@
 						};
 						
 					$scope.ponistiKupovinu = function(sifra) {
-						shoppingCartService.deleteSlog(sifra)
-						podaci()
+						var promise = shoppingCartService.deleteSlog(sifra)
+						promise.then(function(response){
+							podaci()
+						})
+						
 					}
 					 podaci()
 					 
 				    $scope.kupi = function(){
-						 console.log($scope.sveKupljeno)
-						 shoppingCartService.postAll($scope.sveKupljeno)
-						 shoppingCartService.deleteAll()
-						 podaci();
+						 
+						 _.forEach( $scope.sveKupljeno , function(value, key) {
+			    			value.dostavljac = $scope.dostavljac
+			    		
+			    		});
+					     var now = moment();
+					     console.log(now._d)
+					     
+						 var promise = shoppingCartService.postAll($scope.sveKupljeno)
+						 promise.then(function(response){
+							 shoppingCartService.deleteAll().then(function(response){
+								 podaci()
+							 })
+						 })
+						 
+						 
+						 
+						 
 					 }
 					 
-					 
+					 $scope.changedValue = function(dostavaSelected){
+						 $scope.dostavljac = dostavaSelected
+						 
+					 }
 
 					} ]);
 

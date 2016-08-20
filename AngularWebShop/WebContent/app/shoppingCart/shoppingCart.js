@@ -60,6 +60,25 @@
                          
                     }
                 })
+                .state('historyCart',
+                {
+                    url: '/historyCart',
+                    views:
+                    {
+  
+                        'navbar': {
+                            templateUrl: 'partials/navbar.html',
+                            controller : 'navbarController'
+                            
+                         },
+                         'content':{
+                        	 templateUrl: 'app/shoppingCart/historyCart.html',
+                        	 controller: 'historyCartController' 
+                        	 
+                         }
+                         
+                    }
+                })
    
                 }]);
 })(angular);

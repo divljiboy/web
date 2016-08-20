@@ -1,0 +1,35 @@
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Form Name</legend>
+
+
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Username">Username</label>  
+  <div class="col-md-5">
+  <input id="Username" name="Username" ng-model="username" type="text" placeholder="Username" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="passwordinput">Password </label>
+  <div class="col-md-5">
+    <input id="passwordinput" name="passwordinput" ng-model="password" type="password" placeholder="password" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <div class="col-md-4">
+    <button id="singlebutton" name="singlebutton" ng-click="login()" class="btn btn-primary">Submit</button>
+  </div>
+</div>
+</fieldset>
+</form>

@@ -1,0 +1,32 @@
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+     
+      <th>#</th>
+      <th>Sifra Kupovine</th>
+      <th>Vreme Kupovine</th>
+      <th>Dostavljac</th>
+      <th>Cena</th>
+      <th>Kolicina</th>
+      <th>Proizvod</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="x in istorija">
+     <td></td>
+     <td>{{x.sifra}}</td>
+     <td>{{x.dateTime }}</td>
+     <td>{{x.istorijaKup.dostavljac.naziv}}</td>
+     <td>{{x.istorijaKup.cena}}</td>
+     <td>{{x.istorijaKup.kolicina}}</td>
+     <td>{{x.istorijaKup.proizvod.naziv}}</td>
+     <td><button type="button" class="btn btn-warning" ng-click="zalbaKupovinu(x)">Zalba</button></td>
+     <div ng-show="myValue" class="ng-hide">
+    	<div class="form-group">
+  			<label for="usr">Tekst zalbe:</label>
+  				<input type="text" ng-model="text" class="form-control" id="usr">
+  				<button type="button" class="btn btn-info" ng-click="zalba(x)">Zalba</button>
+		</div>
+     </div>
+    </tr>
+</tbody>

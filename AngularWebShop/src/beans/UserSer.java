@@ -7,29 +7,30 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KupovinaSer {
-private	List<Kupovina> lista= new ArrayList<Kupovina>();
+public class UserSer {
+
+    private	List<User> lista= new ArrayList<User>();
     
 	@SuppressWarnings("unchecked")
-	public KupovinaSer(){
+	public UserSer(){
 		FileInputStream fis = null;
 	    ObjectInputStream in = null;
 	    try {
-	      fis = new FileInputStream("./kupovina.ser");
+	      fis = new FileInputStream("./user.ser");
 	      in = new ObjectInputStream(fis);
-	      lista = (List<Kupovina>) in.readObject();
+	      lista = (List<User>) in.readObject();
 	      in.close();
 	    } catch (Exception ex) {
 	      ex.printStackTrace();
 	    }
 	}
-	public List<Kupovina> readData(){
+	public List<User> readData(){
 		FileInputStream fis = null;
 	    ObjectInputStream in = null;
 	    try {
-	      fis = new FileInputStream("./kupovina.ser");
+	      fis = new FileInputStream("./user.ser");
 	      in = new ObjectInputStream(fis);
-	      lista = (List<Kupovina>) in.readObject();
+	      lista = (List<User>) in.readObject();
 	      in.close();
 	    } catch (Exception ex) {
 	      ex.printStackTrace();
@@ -38,17 +39,17 @@ private	List<Kupovina> lista= new ArrayList<Kupovina>();
 		
 	}
 
-	public List<Kupovina> getLista() {
+	public List<User> getLista() {
 		return lista;
 	}
 
-	public void setLista(List<Kupovina> lista) {
+	public void setLista(List<User> lista) {
 		this.lista = lista;
 	}
 
 
-	public void serijalizuj(List<Kupovina> trenutna) {
-		String filename = "./kupovina.ser";
+	public void serijalizuj(List<User> trenutna) {
+		String filename = "./user.ser";
 	    FileOutputStream fos = null;
 	    ObjectOutputStream out = null;
 	    

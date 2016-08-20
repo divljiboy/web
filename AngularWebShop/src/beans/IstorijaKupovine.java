@@ -8,11 +8,30 @@ public class IstorijaKupovine implements Serializable {
 	/**
 	 * 
 	 */
-	ArrayList<ArrayList<Kupovina>> istorijaKup = new ArrayList<ArrayList<Kupovina>>();
+	ArrayList<Kupovina> istorijaKup = new ArrayList<Kupovina>();
 	
 	private int sifra;
 	
+	private String dostavljac;
 	
+	private String dateTime;
+	
+
+	public String getDateTime() {
+		return dateTime;
+	}
+
+	public void setDateTime(String dateTime) {
+		this.dateTime = dateTime;
+	}
+
+	public String getDostavljac() {
+		return dostavljac;
+	}
+
+	public void setDostavljac(String dostavljac) {
+		this.dostavljac = dostavljac;
+	}
 
 	public int getSifra() {
 		return sifra;
@@ -22,11 +41,11 @@ public class IstorijaKupovine implements Serializable {
 		this.sifra = sifra;
 	}
 
-	public ArrayList<ArrayList<Kupovina>> getIstorijaKup() {
+	public ArrayList<Kupovina> getIstorijaKup() {
 		return istorijaKup;
 	}
 
-	public void setIstorijaKup(ArrayList<ArrayList<Kupovina>> istorijaKup) {
+	public void setIstorijaKup(ArrayList<Kupovina> istorijaKup) {
 		this.istorijaKup = istorijaKup;
 	}
 	

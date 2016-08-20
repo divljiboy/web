@@ -4,15 +4,20 @@
         .service('shoppingCartService', ['$http', function ($http) {
             //metode servisa
             return {
-               getAll: function () {
+               getAll: function (name) {
                       
-                      return $http.get('/AngularWebShop/rest/shoppingCart/get')
+                      return $http.get('/AngularWebShop/rest/shoppingCart/get/'+name.username)
                       
                     },
-                post: function (product,kolicina) {
-                		console.log(kolicina)
+               getAllHistory: function () {
+                        
+                        return $http.get('/AngularWebShop/rest/shoppingCart/getAllHistory')
+                        
+                      },
+                post: function (product,kolicina,name) {
                 		
-                    	return $http.post('/AngularWebShop/rest/shoppingCart/add/'+kolicina, product)
+                		
+                    	return $http.post('/AngularWebShop/rest/shoppingCart/add/'+kolicina+'/'+name.username , product)
                     	
                 },
                 deleteSlog : function(sifra)
@@ -27,9 +32,15 @@
                 postAll: function (korpa) {
             	
             		
-                	return $http.post('/AngularWebShop/rest/shoppingCart/addAllToHistory', korpa)
+                	return $http.post('/AngularWebShop/rest/shoppingCart/addAllToHistory/', korpa)
                 	
-            }
+                },
+                postZalba: function (korpa) {
+            	
+            		
+                	return $http.post('/AngularWebShop/rest/zalba/addZalba', korpa)
+                	
+                }
                 
                 
             }

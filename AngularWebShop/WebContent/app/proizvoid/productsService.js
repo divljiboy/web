@@ -6,16 +6,16 @@
             return {
                 getAll: function () {
                     
-                  return $http.get('http://localhost:8080/AngularWebShop/rest/product/getProizvod');
+                  return $http.get('/AngularWebShop/rest/product/getProizvod');
                 },
                 put: function (product)
                     {
                 	
-                 return $http.put('http://localhost:8080/AngularWebShop/rest/product/editProizvod', product)
+                 return $http.put('/AngularWebShop/rest/product/editProizvod', product)
                 
                 },
                 post: function (product) {
-                    	$http.post('http://localhost:8080/AngularWebShop/rest/product/addProizvod', product).success(function(data) {
+                    	$http.post('/AngularWebShop/rest/product/addProizvod', product).success(function(data) {
         		    		  
    		    			  return data;
                       });
@@ -24,12 +24,12 @@
                 deleteSlog : function(bla)
                 {
                 
-                 return $http.post('http://localhost:8080/AngularWebShop/rest/product/deleteProizvod/'+bla);
+                 return $http.post('/AngularWebShop/rest/product/deleteProizvod/'+bla);
                    
                 }
                 ,getProductByShop : function (shopName)
                 {	
-                	return $http.get('http://localhost:8080/AngularWebShop/rest/product/getProductByShop/'+shopName)
+                	return $http.get('/AngularWebShop/rest/product/getProductByShop/'+shopName)
                 }
             }
 

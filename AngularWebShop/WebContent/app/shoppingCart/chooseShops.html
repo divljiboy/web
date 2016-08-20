@@ -14,8 +14,12 @@
                     <a ui-sref="selectShop({shop : '{{shop.naziv }}' })" class="list-group-item">{{shop.naziv}}</a>
                 </div>
                <span class="glyphicons glyphicons-shopping-cart"></span>
-             	<a type="button" ui-sref="shoppingCart()" class="btn btn-success" >Kupljeno</a>
-             	
+               <md-button ...>
+   				<img class="png-icon" src="js/glyphicons-203-shopping-cart.png" style="width: 24px; height: 24px;">
+				</md-button>
+             	<a type="button" ui-sref="shoppingCart()" class="btn btn-success" >Korpa</a>
+           
+             	<a type="button" ui-sref="historyCart()" class="btn btn-info" >Istorija</a>
             </div>
 
             <div class="col-md-9">

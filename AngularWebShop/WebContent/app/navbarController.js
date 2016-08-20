@@ -11,7 +11,14 @@
     		};
     	 
     		podaci();
-    	 
+    		
+    		 function logout() {
+    			 	
+					delete $localStorage.currentUser;
+    	            $http.defaults.headers.common.Authorization = '';
+    	            $state.go('login');
+    	        }
+    		
     		$scope.isOpen = function(){
     			
     			shopService.getAll().then(function(response) {

@@ -1,6 +1,8 @@
 package services;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -15,12 +17,13 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import beans.Dostavljac;
+import beans.IstorijaKupovine;
 import beans.IstorijaKupovineSer;
 import beans.Kupovina;
 import beans.KupovinaSer;
 import beans.Prodavnica;
 import beans.Proizvod;
-
+ import org.json.simple.JSONObject;
 
 @Path("/shoppingCart")
 public class ShoppingCartService {
@@ -32,15 +35,19 @@ public class ShoppingCartService {
 	
 	KupovinaSer kupovina;
 	IstorijaKupovineSer istorijaKupovine;
+	
 	@POST
-	@Path("/add/{kolicina}")
+	@Path("/add/{kolicina}/{username}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String addKupovina(Proizvod p,@PathParam("kolicina") int kolicina) {
+	public String addKupovina(Proizvod p,@PathParam("kolicina") int kolicina,@PathParam("username") String name) {
 		List<Kupovina> trenutnaKupovina=getKupovina();
-	
+		JSONObject obj = new JSONObject();
+		obj.put("status", "ok");
+		
 		Kupovina kupljeno = new Kupovina();
 		kupljeno.setProizvod(p);
+		kupljeno.setKupac(name);
 		kupljeno.setKolicina(kolicina);
 		kupljeno.setCena(p.getCena());
 		if (trenutnaKupovina.size() == 0) {
@@ -56,13 +63,16 @@ public class ShoppingCartService {
 		
 		ctx.setAttribute("kupovina", trenutnaKupovina);
 		kupovina.serijalizuj(trenutnaKupovina);
-		return "OK";
+		return obj.toString();
 	}
+	
 	@POST
 	@Path("/delete/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String delete(@PathParam("id") int sifra) {
+		JSONObject obj = new JSONObject();
+		obj.put("status", "ok");
 		List<Kupovina> trenutna=getKupovina();
 		System.out.println(trenutna.size());
 		for(int i=0;i<trenutna.size();i++)
@@ -77,49 +87,81 @@ public class ShoppingCartService {
 		ctx.setAttribute("kupovina", trenutna);
 		kupovina.serijalizuj(trenutna);
 		
-		return "ok";
+		return obj.toString();
 	}
 	@POST
 	@Path("/deleteAll")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String delete() {
+		JSONObject obj = new JSONObject();
+		obj.put("status", "ok");
+		
 		List<Kupovina> trenutna=getKupovina();
 		trenutna.clear();
 		System.out.println(trenutna.size());
 		ctx.setAttribute("kupovina", trenutna);
 		kupovina.serijalizuj(trenutna);
 		
-		return "ok";
+		return obj.toString();
 	}
 	@POST
 	@Path("/addAllToHistory")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String addAll(List<Kupovina> kupljeno) {
-		System.out.println(kupljeno.get(1).getCena());
-		ArrayList<ArrayList<Kupovina>> trenutna =getIstrijaKupovina();
-
+	public String addAll(ArrayList<Kupovina> kupljeno) {
 		
-		System.out.println("serilizuj");
+		System.out.println(kupljeno);
+		JSONObject obj = new JSONObject();
+		obj.put("status", "ok");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+		Date now = new Date();
+	    String strDate = sdf.format(now);
+	    
+	    
+		ArrayList<IstorijaKupovine> trenutna =getIstorijaKupovina();
+		IstorijaKupovine nova = new IstorijaKupovine();
+		
+		nova.setIstorijaKup(kupljeno);
+		nova.setDateTime(strDate);
+		
+		if (trenutna.size() == 0) {
+			nova.setSifra(1);
+		} else {
+			nova.setSifra(trenutna.get(trenutna.size() - 1).getSifra() + 1);
+		};
 
-		trenutna.add((ArrayList<Kupovina>) kupljeno);
+		trenutna.add(nova);
 		System.out.println(trenutna.size());
 		ctx.setAttribute("istorijaKupovine", trenutna);
 		istorijaKupovine.serijalizuj(trenutna);
 		
-		return "ok";
+		return obj.toString() ;
 	}
 	
 	@GET
-	@Path("/get")
+	@Path("/get/{name}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public List<Kupovina> getAllKupovina(){
-		return getKupovina();
+	public List<Kupovina> getAllKupovina(@PathParam("name") String name){
+		List<Kupovina> sveKupovine = getKupovina();
+		 ArrayList<Kupovina> zaOdgovarajucegKup = new ArrayList<Kupovina>();
+		 
+		 for(int i = 0; i<sveKupovine.size();i++){
+			 if(sveKupovine.get(i).getKupac().equals(name)){
+				 zaOdgovarajucegKup.add(sveKupovine.get(i));
+			 }
+		 }
+		return zaOdgovarajucegKup;
 		
 	}
-	
+	@GET
+	@Path("/getAllHistory")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public ArrayList<IstorijaKupovine> getAllHistory(){
+		return getIstorijaKupovina();
+	}
 
 	private List<Kupovina> getKupovina() {
 		kupovina = new KupovinaSer();
@@ -128,7 +170,7 @@ public class ShoppingCartService {
 		return   kupovina.getLista();
 	}
 	
-	private ArrayList<ArrayList<Kupovina>> getIstrijaKupovina() {
+	private ArrayList<IstorijaKupovine> getIstorijaKupovina() {
 		istorijaKupovine = new IstorijaKupovineSer();
 		ctx.setAttribute("istrijaKupovina", istorijaKupovine.getLista());
 	

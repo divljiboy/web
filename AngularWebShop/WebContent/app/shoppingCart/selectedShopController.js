@@ -11,8 +11,9 @@
 					'productsService',
 					'shoppingCartService',
 					'$stateParams',
+					'$localStorage',
 					function($window, $scope, $state, $rootScope, shopService,
-							productsService,shoppingCartService, $stateParams) {
+							productsService,shoppingCartService, $stateParams,$localStorage) {
 
 						var podaci = function() {
 
@@ -28,16 +29,15 @@
 
 								
 								$scope.allProducts = response.data
-								console.log($scope.allProducts)
+								
 								
 							});
 						};
 						
 						$scope.addToShoppingCart = function(product,kolicina){
 			    			
-			    			console.log(product.naziv)
-			    			console.log(kolicina)
-			    			shoppingCartService.post(product,kolicina).then(function(response) {	
+			    			var name = $localStorage.currentUser
+			    			shoppingCartService.post(product,kolicina,name).then(function(response) {	
 			        			
 			    			});
 			    		}
