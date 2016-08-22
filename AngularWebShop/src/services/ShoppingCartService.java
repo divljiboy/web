@@ -106,12 +106,13 @@ public class ShoppingCartService {
 		return obj.toString();
 	}
 	@POST
-	@Path("/addAllToHistory")
+	@Path("/addAllToHistory/{user}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String addAll(ArrayList<Kupovina> kupljeno) {
+	public String addAll(ArrayList<Kupovina> kupljeno,@PathParam("user") String user) {
 		
-		System.out.println(kupljeno);
+		System.out.println(user);
+	
 		JSONObject obj = new JSONObject();
 		obj.put("status", "ok");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
@@ -124,7 +125,7 @@ public class ShoppingCartService {
 		
 		nova.setIstorijaKup(kupljeno);
 		nova.setDateTime(strDate);
-		
+		nova.setKupac(user);
 		if (trenutna.size() == 0) {
 			nova.setSifra(1);
 		} else {
@@ -156,11 +157,17 @@ public class ShoppingCartService {
 		
 	}
 	@GET
-	@Path("/getAllHistory")
+	@Path("/getAllHistory/{user}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public ArrayList<IstorijaKupovine> getAllHistory(){
-		return getIstorijaKupovina();
+	public ArrayList<IstorijaKupovine> getAllHistory(@PathParam("user") String user){
+		ArrayList<IstorijaKupovine> istorijaZaKupca = new ArrayList<IstorijaKupovine>(){};
+		for(int i = 0; i<getIstorijaKupovina().size(); i++){
+			if(getIstorijaKupovina().get(i).getKupac().equals(user)){
+				istorijaZaKupca.add(getIstorijaKupovina().get(i));
+			}
+		}
+		return istorijaZaKupca;
 	}
 
 	private List<Kupovina> getKupovina() {

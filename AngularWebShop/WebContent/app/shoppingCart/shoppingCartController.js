@@ -19,7 +19,7 @@
 						var podaci = function() {
 							$scope.isWaiting = false
 							shoppingCartService.getAll($localStorage.currentUser).then(function(response){
-								console.log(response.data)
+								
 								$scope.sveKupljeno = response.data
 								var zaPlacanje = 0;
 								for(s in $scope.sveKupljeno){
@@ -50,9 +50,9 @@
 			    		
 			    		});
 					     var now = moment();
-					     console.log(now._d)
-					     
-						 var promise = shoppingCartService.postAll($scope.sveKupljeno)
+					 
+					
+						 var promise = shoppingCartService.postAll($scope.sveKupljeno,$localStorage.currentUser)
 						 promise.then(function(response){
 							 shoppingCartService.deleteAll().then(function(response){
 								 podaci()

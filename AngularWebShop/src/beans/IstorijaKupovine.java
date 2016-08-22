@@ -16,6 +16,7 @@ public class IstorijaKupovine implements Serializable {
 	
 	private String dateTime;
 	
+	private String kupac;
 
 	public String getDateTime() {
 		return dateTime;
@@ -47,6 +48,14 @@ public class IstorijaKupovine implements Serializable {
 
 	public void setIstorijaKup(ArrayList<Kupovina> istorijaKup) {
 		this.istorijaKup = istorijaKup;
+	}
+
+	public String getKupac() {
+		return kupac;
+	}
+
+	public void setKupac(String kupac) {
+		this.kupac = kupac;
 	}
 	
 }

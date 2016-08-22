@@ -13,13 +13,14 @@
 					'dostavljacService',
 					'$stateParams',
 					'AuthenticationService',
+					'$localStorage',
 					function($window, $scope, $state, $rootScope, shopService,
-							productsService,shoppingCartService,dostavljacService, $stateParams,AuthenticationService) {
+							productsService,shoppingCartService,dostavljacService, $stateParams,AuthenticationService,$localStorage) {
 						
 						var podaci = function(){
 							$scope.myValue = false
 							console.log(AuthenticationService.getCurrentUser())
-						    shoppingCartService.getAllHistory().then(function(response){
+						    shoppingCartService.getAllHistory($localStorage.currentUser).then(function(response){
 						    console.log(response.data)
 						    $scope.istorija = []
 						    	_.forEach( response.data , function(value, key) {

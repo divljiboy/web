@@ -9,9 +9,9 @@
                       return $http.get('/AngularWebShop/rest/shoppingCart/get/'+name.username)
                       
                     },
-               getAllHistory: function () {
+               getAllHistory: function (user) {
                         
-                        return $http.get('/AngularWebShop/rest/shoppingCart/getAllHistory')
+                        return $http.get('/AngularWebShop/rest/shoppingCart/getAllHistory/'+user.username)
                         
                       },
                 post: function (product,kolicina,name) {
@@ -29,10 +29,10 @@
                 deleteAll: function(){
                 	return $http.post('/AngularWebShop/rest/shoppingCart/deleteAll');
                 },
-                postAll: function (korpa) {
+                postAll: function (korpa,user) {
             	
-            		
-                	return $http.post('/AngularWebShop/rest/shoppingCart/addAllToHistory/', korpa)
+            	
+                	return $http.post('/AngularWebShop/rest/shoppingCart/addAllToHistory/'+user.username, korpa)
                 	
                 },
                 postZalba: function (korpa) {
