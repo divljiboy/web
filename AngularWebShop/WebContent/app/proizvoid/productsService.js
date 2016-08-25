@@ -8,6 +8,10 @@
                     
                   return $http.get('/AngularWebShop/rest/product/getProizvod');
                 },
+                getPro: function (num) {
+                    
+                    return $http.get('/AngularWebShop/rest/product/getProizvodZa/' + num );
+                  },
                 put: function (product)
                     {
                 	
@@ -30,6 +34,9 @@
                 ,getProductByShop : function (shopName)
                 {	
                 	return $http.get('/AngularWebShop/rest/product/getProductByShop/'+shopName)
+                },
+                postOcenu: function(product,ocena){
+                	return $http.post('/AngularWebShop/rest/product/postOcenu/'+ocena,product)
                 }
             }
 

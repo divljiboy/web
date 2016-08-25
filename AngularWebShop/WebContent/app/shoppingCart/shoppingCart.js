@@ -79,6 +79,25 @@
                          
                     }
                 })
+                 .state('zalba',
+                {
+                    url: '/zalba',
+                    views:
+                    {
+  
+                        'navbar': {
+                            templateUrl: 'partials/navbar.html',
+                            controller : 'navbarController'
+                            
+                         },
+                         'content':{
+                        	 templateUrl: 'app/shoppingCart/zalba.html',
+                        	 controller: 'zalbaController' 
+                        	 
+                         }
+                         
+                    }
+                })
    
                 }]);
 })(angular);

@@ -40,7 +40,17 @@
             		
                 	return $http.post('/AngularWebShop/rest/zalba/addZalba', korpa)
                 	
+                },
+                getAllZalbe: function(){
+                	return $http.get('/AngularWebShop/rest/zalba/getZalba')
+                },
+                postZalbe: function(zalba){
+                	return $http.post('/AngularWebShop/rest/zalba/postZalba',zalba)
+                },
+                postOdbaci: function(zalba){
+                	return $http.post('/AngularWebShop/rest/zalba/postOdbaci',zalba)
                 }
+                
                 
                 
             }

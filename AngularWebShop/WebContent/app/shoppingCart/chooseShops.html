@@ -32,7 +32,7 @@
                             <img src="http://placehold.it/320x150" alt="">
                             <div class="caption">
                                 <h4 class="pull-right">${{product.cena}}</h4>
-                                <h4><a href="#">{{product.naziv}}</a>
+                                <h4><a type="button" ng-click="proizvod(product)">{{product.naziv}}</a>
                                 </h4>
                                 
                             </div>
@@ -50,14 +50,20 @@
 							</div>
 											
                             <div class="ratings">
-                                <p class="pull-right">15 reviews</p>
+                                <p class="pull-right">{{product.ocenaKomentara}} ocena</p>
+                               
                                 <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
+								<span uib-rating ng-model="ocena" max="max" read-only="isReadonly"
+									on-hover="hoveringOver(value)" on-leave="overStar = null"
+									titles="['one','two','three']" aria-labelledby="default-rating"></span>
+								<span class="label"
+									ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}"
+									ng-show="overStar && !isReadonly">{{percent}}%</span>
+									<p class="pull-right">{{product.brojOcenjivnja}} reviews</p>
+									<button type="button" class="btn btn-primary btn-xs"
+									ng-click="applyOcena(product,ocena)" ng-disabled="isReadonly">Oceni</button>
                                 </p>
+                                
                             </div>
                         </div>
                     </div>

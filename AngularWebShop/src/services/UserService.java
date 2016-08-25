@@ -90,7 +90,7 @@ public class UserService {
 		response.put("status", "ok");
 		response.put("username",p.getUsername());
 		response.put("password",p.getPassword());
-	
+		response.put("role", "korisnik");
 		
 		return response ;
 		

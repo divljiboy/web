@@ -1,0 +1,26 @@
+<h1>Zalbe</h1>
+
+<div class="container">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Korisnik</th>
+        <th class="col-xs-6 ">Zalba</th>
+        <th>Proizvod</th>
+        <th>Sifra </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="zal in zalbe">
+        <td>{{ zal.korisnik }}</td>
+        <td>{{ zal.text }}</td>
+         
+        <td>{{ zal.naziv}}</td>
+        <td>{{ zal.sifraKupovine }}{{zal.sifraProizvoda}}</td>
+        <td><button ng-click="prihvati(zal)" type="button" class="btn btn-primary btn-xs">Prihvati</button></td>
+        <td><button ng-click="odbaci(zal)"type="button" class="btn btn-danger btn-xs">Odbaci</button></td>
+      </tr>
+    
+    </tbody>
+  </table>
+</div>

@@ -19,12 +19,12 @@
      <td>{{x.istorijaKup.cena}}</td>
      <td>{{x.istorijaKup.kolicina}}</td>
      <td>{{x.istorijaKup.proizvod.naziv}}</td>
-     <td><button type="button" class="btn btn-warning" ng-click="zalbaKupovinu(x)">Zalba</button></td>
+     <td><button type="button" class="btn btn-warning" ng-disabled="time(x.dateTime)" ng-click="zalbaKupovinu(x)">Zalba</button></td>
      <div ng-show="myValue" class="ng-hide">
     	<div class="form-group">
   			<label for="usr">Tekst zalbe:</label>
   				<input type="text" ng-model="text" class="form-control" id="usr">
-  				<button type="button" class="btn btn-info" ng-click="zalba(x)">Zalba</button>
+  				<button type="button" class="btn btn-info"  ng-click="zalba(x)">Zalba</button>
 		</div>
      </div>
     </tr>

@@ -23,7 +23,10 @@ public class Proizvod implements Serializable {
 	/** @pdOid 29cbfe20-2cd9-4d02-a381-2a43ce5105f5 */
 	private int kolicina;
 	/** @pdOid 5de598aa-cac1-428d-8e0c-50a821f0d439 */
-	private Float ocena;
+	  private int srednjaOcena ;
+	   
+	 private int brojOcenjivnja = 0;
+	 private int ocenaKomentara = 0;
 	
    /** @pdOid 153b8797-5d50-4022-921e-8866e28157f7 */
    //private Image slika;
@@ -140,12 +143,36 @@ public void setKolicina(int kolicina) {
 	this.kolicina = kolicina;
 }
 
-public Float getOcena() {
-	return ocena;
+
+
+
+public int getSrednjaOcena() {
+	return srednjaOcena;
 }
 
-public void setOcena(Float ocena) {
-	this.ocena = ocena;
+
+public void setSrednjaOcena(int srednjaOcena) {
+	this.srednjaOcena = srednjaOcena;
+}
+
+
+public int getBrojOcenjivnja() {
+	return brojOcenjivnja;
+}
+
+
+public void setBrojOcenjivnja(int brojOcenjivnja) {
+	this.brojOcenjivnja = brojOcenjivnja;
+}
+
+
+public int getOcenaKomentara() {
+	return ocenaKomentara;
+}
+
+
+public void setOcenaKomentara(int ocenaKomentara) {
+	this.ocenaKomentara = ocenaKomentara;
 }
 
 

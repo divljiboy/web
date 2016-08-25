@@ -41,6 +41,13 @@
 			        			
 			    			});
 			    		}
+						
+						$scope.proizvod = function(proizvod){
+							$state.go('proizvodRecenzije', {
+								"proizvod" : proizvod.sifra
+					});
+						}
+						
 					 podaci()
 						
 

@@ -17,6 +17,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
+import org.json.simple.JSONObject;
+
 import beans.Proizvod;
 import beans.ProizvodSer;
 import beans.Recenzija;
@@ -73,6 +75,24 @@ public class RecenzijaService {
 		return getData();
 		
 	}
+	
+	@GET
+	@Path("/getRecenzijaProizvod/{proizvod}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public List<Recenzija> getRecenzijeProizvod(@PathParam("proizvod") int proizvod){
+		ArrayList<Recenzija> listaproizvoda = new ArrayList<Recenzija>() ;
+		for(int i =0; i < getData().size();i++){
+			
+			if(getData().get(i).getProizvod().getSifra() == proizvod){
+				listaproizvoda.add(getData().get(i));
+			}
+		}
+		return listaproizvoda;
+		
+	}
+	
+	
 	@GET
 	@Path("/getRecenzijaByProduct/{proizvod}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -122,7 +142,29 @@ public class RecenzijaService {
 		
 		
 	}
-
+	
+	@POST
+	@Path("/ocenjivanje/{ocena}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public JSONObject ocenjivanje(Recenzija recenzija,@PathParam("ocena") int ocena) {
+		List<Recenzija> trenutna=getData();
+		JSONObject obj = new JSONObject();
+		for(int i = 0; i<trenutna.size();i++){
+			if(trenutna.get(i).getSifra()==recenzija.getSifra()){
+				int prom =trenutna.get(i).getBrojOcenjivnja() +1;
+				trenutna.get(i).setBrojOcenjivnja(prom);
+				 trenutna.get(i).setSrednjaOcena(trenutna.get(i).getSrednjaOcena()+ocena);
+				int novaOcena = ( trenutna.get(i).getSrednjaOcena()) / prom;
+				trenutna.get(i).setOcenaKomentara(novaOcena);;
+				
+			}
+		}
+		
+		ctx.setAttribute("recenzije", trenutna);
+		recenzije.serijalizuj(trenutna);
+		return (JSONObject) obj.put("status", "ok") ;
+	}
 
 	
 	

@@ -20,30 +20,12 @@
 			</div>
 		</div>
 
-		<div class="col-md-6">
-			<p class="input-group">
-				<input type="text" ng-init="recenzija.datum=mojInit" class="form-control" uib-datepicker-popup
-					ng-model="recenzija.datum" is-open="popup2.opened"
-					datepicker-options="dateOptions" ng-required="true"
-					close-text="Close" ui-date/> <span class="input-group-btn">
-					<button type="button" class="btn btn-default" ng-click="open2()">
-						<i class="glyphicon glyphicon-calendar"></i>
-					</button>
-				</span>
-			</p>
-		</div>
+	
 
-
-		<div>
-			<button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
-			<button type="button" class="btn btn-sm btn-default"
-				ng-click="setDate(2009, 7, 24)">2009-08-24</button>
-			<button type="button" class="btn btn-sm btn-danger"
-				ng-click="clear()">Clear</button>
-
-		</div>
-		</br>
-		<div>
+		
+		<div class="form-group">
+		<label class="col-md-4 control-label" for="selectbasic">Izaberi ocenu</label>
+		
 			<span uib-rating ng-model="recenzija.ocena" max="max" read-only="isReadonly"
 				on-hover="hoveringOver(value)" on-leave="overStar = null"
 				titles="['one','two','three']" aria-labelledby="default-rating"></span>

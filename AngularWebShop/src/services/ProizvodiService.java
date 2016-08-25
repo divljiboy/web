@@ -16,6 +16,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.json.simple.JSONObject;
+
+import beans.ProductToAdd;
 import beans.Proizvod;
 import beans.ProizvodSer;
 
@@ -68,10 +71,51 @@ public class ProizvodiService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public List<Proizvod> getProizvodi(){
-		System.out.println("upao sam u backend");
+		
 		return getProducts();
 		
 	}
+	@GET
+	@Path("/getProizvodZa/{pro}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Proizvod getProizvod(@PathParam("pro") int num){
+		System.out.println(num + "***");
+		for(int i = 0;i <getProducts().size();i++){
+			System.out.println(getProducts().get(i).getSifra());
+			if(getProducts().get(i).getSifra() == num){
+				return (getProducts().get(i));
+			
+			}
+		}
+		return getProducts().get(num-1);
+		
+	}
+	
+	@POST
+	@Path("/postOcenu/{ocena}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public JSONObject addOcenu(Proizvod p,@PathParam("ocena") int ocena) {
+		JSONObject obj = new JSONObject();
+		List<Proizvod> trenutna=getProducts();
+		
+		for(int i = 0; i<trenutna.size();i++){
+			if(trenutna.get(i).getSifra()==p.getSifra()){
+				int prom =trenutna.get(i).getBrojOcenjivnja() +1;
+				trenutna.get(i).setBrojOcenjivnja(prom);
+				 trenutna.get(i).setSrednjaOcena(trenutna.get(i).getSrednjaOcena()+ocena);
+				int novaOcena = ( trenutna.get(i).getSrednjaOcena()) / prom;
+				trenutna.get(i).setOcenaKomentara(novaOcena);;
+				
+			}
+		}
+		ctx.setAttribute("proizvodi", trenutna);
+		proizvodi.serijalizuj(trenutna);
+		
+		return (JSONObject) obj.put("status", "key");
+	}
+	
 	@GET
 	@Path("/getProductByShop/{shopName}")
 	@Produces(MediaType.APPLICATION_JSON)

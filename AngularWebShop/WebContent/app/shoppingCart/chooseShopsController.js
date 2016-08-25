@@ -5,7 +5,7 @@
     		
     		var podaci=function(){ 
     			productsService.getAll().then(function(response) {	
-    			
+    				console.log(response.data)
     			$scope.allProducts = response.data
     			
     	    	});
@@ -23,14 +23,52 @@
     			shoppingCartService.post(product,kolicina,name).then(function(response) {	
         			
         		
-        			
-        	    	});
-    			
+    			});
     			
     		}
-    		
+    		$scope.proizvod = function(proizvod){
+    			$state.go('proizvodRecenzije', {
+							"proizvod" : proizvod.sifra
+				});
+    		}
     		
     		podaci();
+    		
+    		  $scope.applyOcena = function(product,ocena){
+    			  
+    			  productsService.postOcenu(product,ocena).then(function(response){
+    				  podaci()
+    			  })
+    		  }
+    		  
+    		  $scope.open2 = function() {
+				    $scope.popup2.opened = true;
+				  };
+
+				 
+
+				  $scope.popup2 = {
+				    opened: false
+				  };
+
+    		  $scope.ocena = 3;
+			  $scope.max = 5;
+			  $scope.isReadonly = false;
+
+			  $scope.hoveringOver = function(value) {
+			    $scope.overStar = value;
+			    $scope.percent = 100 * (value / $scope.max);
+			  };
+			  
+			 
+			  
+			  $scope.ratingStates = [
+			    {stateOn: 'glyphicon-ok-sign', stateOff: 'glyphicon-ok-circle'},
+			    {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'},
+			    {stateOn: 'glyphicon-heart', stateOff: 'glyphicon-ban-circle'},
+			    {stateOn: 'glyphicon-heart'},
+			    {stateOff: 'glyphicon-off'}
+			  ];
     	 
    }]);
 

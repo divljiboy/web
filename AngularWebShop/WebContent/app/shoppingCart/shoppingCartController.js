@@ -15,9 +15,10 @@
 					'$localStorage',
 					function($window, $scope, $state, $rootScope, shopService,
 							productsService,shoppingCartService,dostavljacService, $stateParams,$localStorage) {
-
+						 $scope.currentState = 'Not ready';
+						 
 						var podaci = function() {
-							$scope.isWaiting = false
+						
 							shoppingCartService.getAll($localStorage.currentUser).then(function(response){
 								
 								$scope.sveKupljeno = response.data
@@ -50,7 +51,7 @@
 			    		
 			    		});
 					     var now = moment();
-					 
+					     console.log($scope.sveKupljeno)
 					
 						 var promise = shoppingCartService.postAll($scope.sveKupljeno,$localStorage.currentUser)
 						 promise.then(function(response){
@@ -65,8 +66,9 @@
 					 }
 					 
 					 $scope.changedValue = function(dostavaSelected){
+				
 						 $scope.dostavljac = dostavaSelected
-						 
+						
 					 }
 
 					} ]);

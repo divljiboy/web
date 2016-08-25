@@ -24,7 +24,12 @@ public class Recenzija implements Serializable {
    private String komentar;
    /** @pdOid 6f3d1f3a-7c6f-4c65-923c-33e36e48938b */
    //private Korisnik korsnik;
+   private String korisnik;
    
+   private int srednjaOcena ;
+   
+   private int brojOcenjivnja = 0;
+   private int ocenaKomentara = 0;
    private Proizvod proizvod;
    
    public Date getDatum() {
@@ -72,5 +77,37 @@ public void setProizvod(Proizvod proizvod) {
    public void setSifra(int newSifra) {
       sifra = newSifra;
    }
+
+public String getKorisnik() {
+	return korisnik;
+}
+
+public void setKorisnik(String korisnik) {
+	this.korisnik = korisnik;
+}
+
+public int getSrednjaOcena() {
+	return srednjaOcena;
+}
+
+public void setSrednjaOcena(int srednjaOcena) {
+	this.srednjaOcena = srednjaOcena;
+}
+
+public int getBrojOcenjivnja() {
+	return brojOcenjivnja;
+}
+
+public void setBrojOcenjivnja(int brojOcenjivnja) {
+	this.brojOcenjivnja = brojOcenjivnja;
+}
+
+public int getOcenaKomentara() {
+	return ocenaKomentara;
+}
+
+public void setOcenaKomentara(int ocenaKomentara) {
+	this.ocenaKomentara = ocenaKomentara;
+}
 
 }

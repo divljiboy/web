@@ -1,0 +1,109 @@
+<form class="form-horizontal">
+
+	<fieldset>
+
+		<!-- Form Name -->
+		<legend>Recenzije</legend>
+<div class="container">
+  <h2>Basic Table</h2>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Komentar</th>
+        <th>Ocena</th>
+        <th>Korisnik</th>
+        <th>Srednja ocena</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="recen in recenzijaProizvoda | orderBy:'-ocena'">
+        <td>{{ recen.komentar }}</td>
+        <td>{{ recen.ocena }}</td>
+        <td>{{ recen.korisnik }}</td>
+        <td>{{ recen.ocenaKomentara }}</td>
+        <td><button ng-if="currentUser === recen.korisnik" ng-Click ="obrisiSlog(recen.sifra)" class="btn btn-danger btn-xs">Obrisi</button><td>
+      	<td><button ng-if="currentUser === recen.korisnik" ng-Click="edit(recen)"class="btn btn-primary btn-xs" ng-disabled="selectovanEdit">Edit</button><td>
+		<td><button ng-click="oceniKomentar(recen)" class="btn btn-info btn-xs">Oceni komentar</button></td>
+		<td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectbasic"></label>
+<button  ng-click="show()" class="btn btn-primary ">Add comment</button>
+</div>
+
+		
+	
+
+		<div ng-show="pokazi">
+		<div class="form-group" >
+		
+		<label class="col-md-4 control-label" for="selectbasic">Izaberi ocenu</label>
+		
+			<span uib-rating ng-model="recenzija.ocena" max="max" read-only="isReadonly"
+				on-hover="hoveringOver(value)" on-leave="overStar = null"
+				titles="['one','two','three']" aria-labelledby="default-rating"></span>
+			<span class="label"
+				ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}"
+				ng-show="overStar && !isReadonly">{{percent}}%</span>
+
+			<button type="button" class="btn btn-sm btn-danger"
+				ng-click="recenzija.ocena = 0" ng-disabled="isReadonly">Clear</button>
+		</div>
+
+		<!-- Textarea -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="komentar">Komentar</label>
+			<div class="col-md-4">
+				<textarea ng-model="recenzija.komentar" class="form-control"
+					id="komentar" name="komentar">Ostavite vas komentar ovde...</textarea>
+			</div>
+		</div>
+
+		
+
+		<div class="form-group" ng-if="addFlag">
+			<label class="col-md-4 control-label" for="button1id"></label>
+			<div class="col-md-8">
+				<button id="button1id" name="button1id" ng-click="addSlog()"
+					class="btn btn-success">OK</button>
+				<button id="cancel" name="cancel" ng-click="cancelSlog()"
+					class="btn btn-danger">Cancel</button>
+			</div>
+		</div>
+		<div class="form-group" ng-if="editFlag">
+			<label class="col-md-4 control-label" for="button1id"></label>
+			<div class="col-md-8">
+				<button id="button1id" name="button1id" ng-click="editSlog()"
+					class="btn btn-success">Edit</button>
+				<button id="cancel" name="cancel" ng-click="cancelSlog()"
+					class="btn btn-danger">Cancel</button>
+			</div>
+		</div>
+		</div>
+		<div ng-show="oceni">
+		<div class="form-group" >
+		
+		<label class="col-md-4 control-label" for="selectbasic">Izaberi ocenu komentara</label>
+		
+			<span uib-rating ng-model="komentar.ocena" max="max" read-only="isReadonly"
+				on-hover="hoveringOver(value)" on-leave="overStar = null"
+				titles="['one','two','three']" aria-labelledby="default-rating"></span>
+			<span class="label"
+				ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}"
+				ng-show="overStar && !isReadonly">{{percent}}%</span>
+
+			<button type="button" class="btn btn-sm btn-danger"
+				ng-click="komentar.ocena = 0" ng-disabled="isReadonly">Clear</button>
+				<button type="button" class="btn btn-sm btn-primary"
+				ng-click="applyOcena()" ng-disabled="isReadonly">Oceni</button>
+		</div>
+
+
+	</fieldset>
+</form>

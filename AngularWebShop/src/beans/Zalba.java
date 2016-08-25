@@ -14,6 +14,8 @@ public class Zalba implements Serializable {
 
 	private String text;
 
+	private String korisnik;
+	
 	public int getSifra() {
 		return sifra;
 	}
@@ -52,6 +54,14 @@ public class Zalba implements Serializable {
 
 	public void setText(String text) {
 		this.text = text;
+	}
+
+	public String getKorisnik() {
+		return korisnik;
+	}
+
+	public void setKorisnik(String korisnik) {
+		this.korisnik = korisnik;
 	}
 	
 	

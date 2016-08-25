@@ -16,7 +16,14 @@
 					'$localStorage',
 					function($window, $scope, $state, $rootScope, shopService,
 							productsService,shoppingCartService,dostavljacService, $stateParams,AuthenticationService,$localStorage) {
-						
+						$scope.time = function(time){
+						 var date = moment(time,'MMMM Do YYYY, h:mm:ss a')
+						 var dayAfter = moment(time,'MMMM Do YYYY, h:mm:ss a').add(1,'days')
+						 var now = moment()
+							if(now.isAfter(dayAfter)){
+								return true
+							}else return false
+						}
 						var podaci = function(){
 							$scope.myValue = false
 							console.log(AuthenticationService.getCurrentUser())
@@ -29,7 +36,7 @@
 						    			 object.istorijaKup=[]
 						    			 object.sifra = value.sifra
 						    			 object.istorijaKup = value3;
-						    			 object.dateTime  = moment(value.dateTime).format("HH:mm:ss")
+						    			 object.dateTime  = moment(value.dateTime).format('MMMM Do YYYY, h:mm:ss a')
 						    			 
 						    			 $scope.istorija.push(object)
 						    		
@@ -48,6 +55,7 @@
 							
 							$scope.myValue = false
 							var object = {}
+							object.korisnik = $localStorage.currentUser.username
 							object.sifra =""
 							object.sifraKupovine = podatak.sifra
 							object.sifraProizvoda = podatak.istorijaKup.sifra

@@ -22,6 +22,25 @@
                          
                     }
                 })
+                .state('proizvodRecenzije',
+                {
+                    url: '/proizvodRecenzije/{proizvod}',
+                    views:
+                    {
+  
+                        'navbar': {
+                            templateUrl: 'partials/navbar.html',
+                            controller : 'navbarController'
+                            
+                         },
+                         'content':{
+                        	 
+                        	 templateUrl: 'app/recenzija/proizvodRecenzije.html',
+                        	 controller: 'proizvodRecenzijaController'
+                         }
+                         
+                    }
+                })
                 .state('addRecenzija',
             	 {
             	  	url:'/addRecenzija/{operacija}',

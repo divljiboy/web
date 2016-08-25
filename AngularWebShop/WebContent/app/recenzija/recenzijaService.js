@@ -8,6 +8,9 @@
                     
                   return $http.get('/AngularWebShop/rest/recenzija/getRecenzija');
                 },
+                getRecenzija: function(proizvod) {
+                	return $http.get('/AngularWebShop/rest/recenzija/getRecenzijaProizvod/'+proizvod);
+                },
                 put: function (product)
                     {
                 	
@@ -15,7 +18,7 @@
                 
                 },
                 post: function (product) {
-                    	$http.post('/AngularWebShop/rest/recenzija/addRecenzija', product).success(function(data) {
+                    	return $http.post('/AngularWebShop/rest/recenzija/addRecenzija', product).success(function(data) {
         		    		  
    		    			  return data;
                       });
@@ -25,6 +28,12 @@
                 {
                 
                  return $http.post('/AngularWebShop/rest/recenzija/deleteRecenzija/'+bla);
+                   
+                },
+                ocenivanjeKomentara : function(recenzija,ocena)
+                {
+                
+                 return $http.post('/AngularWebShop/rest/recenzija/ocenjivanje/'+ocena,recenzija );
                    
                 }
                 ,getProductByShop : function (shopName)
