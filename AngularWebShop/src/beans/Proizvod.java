@@ -2,6 +2,7 @@ package beans;
 
 import java.awt.Image;
 import java.io.Serializable;
+import java.util.Date;
 
 /** @pdOid 9ddc6c83-56b1-497b-8cad-54aeb6aa4c07 */
 public class Proizvod implements Serializable {
@@ -24,7 +25,18 @@ public class Proizvod implements Serializable {
 	private int kolicina;
 	/** @pdOid 5de598aa-cac1-428d-8e0c-50a821f0d439 */
 	  private int srednjaOcena ;
+	  
+	private Boolean akcija = false;
+	
+	private Float cenaBezAkcije;
+	
+	private Date datumPocetka;
+	
+	private Date datumKraja;
 	   
+	private Boolean akcijaZaPrikaz = false;
+	
+	private Float akcijskaCena;
 	 private int brojOcenjivnja = 0;
 	 private int ocenaKomentara = 0;
 	
@@ -173,6 +185,66 @@ public int getOcenaKomentara() {
 
 public void setOcenaKomentara(int ocenaKomentara) {
 	this.ocenaKomentara = ocenaKomentara;
+}
+
+
+public Boolean getAkcija() {
+	return akcija;
+}
+
+
+public void setAkcija(Boolean akcija) {
+	this.akcija = akcija;
+}
+
+
+public Float getCenaBezAkcije() {
+	return cenaBezAkcije;
+}
+
+
+public void setCenaBezAkcije(Float cenaBezAkcije) {
+	this.cenaBezAkcije = cenaBezAkcije;
+}
+
+
+public Date getDatumPocetka() {
+	return datumPocetka;
+}
+
+
+public void setDatumPocetka(Date datumPocetka) {
+	this.datumPocetka = datumPocetka;
+}
+
+
+public Date getDatumKraja() {
+	return datumKraja;
+}
+
+
+public void setDatumKraja(Date datumKraja) {
+	this.datumKraja = datumKraja;
+}
+
+
+public Float getAkcijskaCena() {
+	return akcijskaCena;
+}
+
+
+public void setAkcijskaCena(Float akcijskaCena) {
+	this.akcijskaCena = akcijskaCena;
+}
+
+
+public Boolean getAkcijaZaPrikaz() {
+	return akcijaZaPrikaz;
+}
+
+
+public void setAkcijaZaPrikaz(Boolean akcijaZaPrikaz) {
+	this.akcijaZaPrikaz = akcijaZaPrikaz;
 }
 
 

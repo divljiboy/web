@@ -1,5 +1,5 @@
-<div class="table-responsive">
- <div ng-include src="'partials/toolbar.html'"></div>
+<div  ng-if="getCurrentUserRole()=='admin'" class="table-responsive">
+ <div  ng-include src="'partials/toolbar.html'"></div>
 
 <div class="container">
   <h2>Dostavljac Table</h2>

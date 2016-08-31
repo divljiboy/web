@@ -22,18 +22,14 @@
 											.getAll()
 											.then(
 													function(response) {
-														console
-																.log("uspelo getovanje");
-														console
-																.log(response.data);
+														
 														$scope.gridOptions.data = response.data;
 														$scope.podaci = response.data;
 
 													},
 													function(response) {
 
-														console
-																.log("nije uspelo getovanje");
+														
 													});
 
 								};

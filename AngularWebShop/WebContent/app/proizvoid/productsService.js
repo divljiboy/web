@@ -1,7 +1,7 @@
 (function () {
 
     angular.module('webShop')
-        .service('productsService', ['$http', function ($http) {
+        .service('productsService', ['$http','$state', function ($http, $state) {
             //metode servisa
             return {
                 getAll: function () {
@@ -21,7 +21,7 @@
                 post: function (product) {
                     	$http.post('/AngularWebShop/rest/product/addProizvod', product).success(function(data) {
         		    		  
-   		    			  return data;
+   		    			  $state.go('allProducts')
                       });
                     	
                 },
@@ -37,6 +37,9 @@
                 },
                 postOcenu: function(product,ocena){
                 	return $http.post('/AngularWebShop/rest/product/postOcenu/'+ocena,product)
+                },
+                postAkciju: function(product){
+                	return $http.post('/AngularWebShop/rest/product/akcija',product)
                 }
             }
 

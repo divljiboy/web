@@ -6,11 +6,11 @@
     <div class="container">
 
         <div class="row">
-
+			
             <div class="col-md-3">
                 <p class="lead">Shop Name</p>
                  
-                <div ng-repeat="shop in allShops" class="list-group">
+                <div ng-repeat="shop in allShops " class="list-group">
                     <a ui-sref="selectShop({shop : '{{shop.naziv }}' })" class="list-group-item">{{shop.naziv}}</a>
                 </div>
                <span class="glyphicons glyphicons-shopping-cart"></span>
@@ -23,10 +23,14 @@
             </div>
 
             <div class="col-md-9">
-
-
+            <button type="button" class="btn btn-primary" ng-click="trueSrch()">Search</button>
+				<div ng-show="trueSearch">
+				<label>Any: <input ng-model="search.$"></label> 
+				<label>Naziv <input ng-model="search.naziv"></label>
+				<label>Cena <input ng-model="search.cena"></label>
+				</div>
                 <div class="row">
-					<div ng-repeat="product in allProducts">
+					<div ng-repeat="product in allProducts | filter:search:strict">
                     <div class="col-sm-4 col-lg-4 col-md-4" >
                         <div class="thumbnail">
                             <img src="http://placehold.it/320x150" alt="">
@@ -53,6 +57,9 @@
                                 <p class="pull-right">{{product.ocenaKomentara}} ocena</p>
                                
                                 <p>
+                                <button type="button" ng-show="product.akcijaZaPrikaz" class="btn btn-danger btn-xs">
+  								<span class="glyphicon glyphicon-star" aria-hidden="true"></span> AKCIJA
+								</button>
 								<span uib-rating ng-model="ocena" max="max" read-only="isReadonly"
 									on-hover="hoveringOver(value)" on-leave="overStar = null"
 									titles="['one','two','three']" aria-labelledby="default-rating"></span>

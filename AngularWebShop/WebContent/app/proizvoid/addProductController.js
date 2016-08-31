@@ -51,8 +51,7 @@
 
 
 						$scope.addSlog = function() {
-							productsService.post($scope.product);
-							$state.go('allProducts');
+							productsService.post($scope.product)
 						};
 
 					} ]);

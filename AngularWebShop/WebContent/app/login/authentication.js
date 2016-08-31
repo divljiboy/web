@@ -14,13 +14,14 @@
         return service;
 
         function login(username, password) {
-            $http.post('/AngularWebShop/rest/user/authenticate', { username: username, password: password })
+        	console.log(username,password)
+            $http.post('/AngularWebShop/rest/user/authenticate', { username: username, password: password})
                 .success(function (response) {
                     // ukoliko postoji token, prijava je uspecna
-                	console.log(response)
+                	
                     if (response.status === "ok") {
                         // korisnicko ime, token i rola (ako postoji) cuvaju se u lokalnom skladištu
-                        var currentUser = { username: username }                       
+                        var currentUser = { username: username,role:response.role }                       
                        // if(tokenPayload.role){
                            // currentUser.role = tokenPayload.role;
                       //  }

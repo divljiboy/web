@@ -2,7 +2,7 @@
        
     angular.module('webShop')
     	.controller('chooseShopsController', ['$window','$scope', '$state', '$rootScope', 'shopService','productsService','shoppingCartService', '$stateParams','$localStorage', function ($window,$scope, $state, $rootScope, shopService,productsService,shoppingCartService, $stateParams,$localStorage) {
-    		
+    		$scope.trueSearch = false
     		var podaci=function(){ 
     			productsService.getAll().then(function(response) {	
     				console.log(response.data)
@@ -15,7 +15,9 @@
         			
         	    	});
     		};
-    		
+    		$scope.trueSrch = function(){
+    			 $scope.trueSearch =!$scope.trueSearch
+    		}
     		$scope.addToShoppingCart = function(product,kolicina){
     			//console.log($localStorage.currentUser)
     			var name = $localStorage.currentUser

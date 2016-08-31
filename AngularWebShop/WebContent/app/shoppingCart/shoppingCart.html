@@ -21,7 +21,7 @@
     <div class="form-group">
     <label class="col-md-4 control-label" for="button1id"><h2>Ukupno: {{zaPlacanje}}</h2> </label>
   	<div class="col-md-8">
-    <button id="button1id" name="button1id" class="btn btn-success"  ng-disabled="currentState === 'Not ready'" ng-click="kupi()">Plati </button>
+    <button id="button1id" ng-if="getCurrentUserRole()!='admin'" name="button1id" class="btn btn-success"  ng-disabled="currentState === 'Not ready'" ng-click="kupi()">Plati </button>
 			<a type="button" ui-sref="historyCart()" class="btn btn-info" >Istorija</a>
 			<div class="col-xs-2">
 				<select ng-model="currentState"  id="selectbasic" name="selectbasic" class="form-control"

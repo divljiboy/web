@@ -1,7 +1,7 @@
 (function (angular) {
        
     angular.module('webShop')
-    	.controller('navbarController', ['$window','$scope', '$state', '$rootScope', 'shopService', '$stateParams', function ($window,$scope, $state, $rootScope, shopService, $stateParams) {
+    	.controller('navbarController', ['$window','$scope', '$state', '$rootScope', 'shopService', '$stateParams','$localStorage', function ($window,$scope, $state, $rootScope, shopService, $stateParams,$localStorage) {
     		
     		var podaci=function(){ shopService.getAll().then(function(response) {
     			
@@ -9,7 +9,7 @@
     			
     	    });
     		};
-    	 
+    		
     		podaci();
     		
     		 function logout() {

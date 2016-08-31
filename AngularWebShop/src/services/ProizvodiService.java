@@ -1,6 +1,7 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -71,7 +72,25 @@ public class ProizvodiService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public List<Proizvod> getProizvodi(){
-		
+		List<Proizvod> trenutna=getProducts();
+		Date date = new Date();
+		for(int i=0;i< trenutna.size();i++){
+			if(trenutna.get(i).getAkcija()==true){
+				System.out.println("ovoo je akcija");
+				if (  date.after(trenutna.get(i).getDatumPocetka()) && date.before(trenutna.get(i).getDatumKraja())){
+					System.out.println("usao u datum");
+					trenutna.get(i).setCenaBezAkcije(trenutna.get(i).getCena());
+					trenutna.get(i).setCena(trenutna.get(i).getAkcijskaCena());
+					trenutna.get(i).setCenaBezAkcije(trenutna.get(i).getCenaBezAkcije());
+					trenutna.get(i).setAkcijaZaPrikaz(true);
+				}else{
+					trenutna.get(i).setAkcijaZaPrikaz(false);
+					trenutna.get(i).setCena(trenutna.get(i).getCenaBezAkcije());
+				}
+			}
+		}
+		ctx.setAttribute("proizvodi", trenutna);
+		proizvodi.serijalizuj(trenutna);
 		return getProducts();
 		
 	}
@@ -167,7 +186,29 @@ public class ProizvodiService {
 		
 	};
 
+	@POST
+	@Path("/akcija")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public JSONObject akcija(Proizvod pro) {
+		List<Proizvod> trenutna=getProducts();
+		int a= trenutna.size();
+		JSONObject json = new JSONObject();
+		
+		for(int i=0;i< a;i++){
+			if(trenutna.get(i).getSifra() == pro.getSifra()){
+				trenutna.set(i, pro);
+				break;
+			}
+		}
+		ctx.setAttribute("proizvodi", trenutna);
+		proizvodi.serijalizuj(trenutna);
 
+		return (JSONObject) json.put("status", "okej");
+		
+		
+		
+	};
 	
 	
 	

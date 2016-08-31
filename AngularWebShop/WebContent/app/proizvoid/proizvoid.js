@@ -54,7 +54,21 @@
                   	  		
                   	  	}
                      })
-                    
+                     .state('akcijaProducts',{
+                  	   url:'/akcijaProducts',
+                  	  	views:
+                  	  	{
+                  	  		'navbar':{
+                  	  			templateUrl: 'partials/navbar.html',
+                                controller : 'navbarController'
+                  	  		},
+                  	  		'content':{
+                  	  			templateUrl: 'app/proizvoid/ackijaProduct.html',
+                  	  			controller: 'akcijaProductController'
+                  	  		}
+                  	  		
+                  	  	}
+                     })
    
                 }]);
 })(angular);
