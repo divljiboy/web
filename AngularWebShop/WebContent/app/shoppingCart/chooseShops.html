@@ -41,9 +41,10 @@
                                 
                             </div>
 							<div class="form-group">
-							  <label class="col-md-4 control-label" for="textinput">Dodaj</label>  
+							  
+							  <span class="label col-md-4 "></span>
 							  <div class="col-md-4">
-							  <input id="textinput" name="textinput" ng-model="kolicina" type="text" placeholder="Kolicina" class="form-control input-md">
+							  <input id="textinput" name="textinput" ng-model="kolicina" type="text" placeholder="Kolicina" class="form-control col-md-4 input-md">
 							    
 							  </div>
 						
@@ -57,9 +58,7 @@
                                 <p class="pull-right">{{product.ocenaKomentara}} ocena</p>
                                
                                 <p>
-                                <button type="button" ng-show="product.akcijaZaPrikaz" class="btn btn-danger btn-xs">
-  								<span class="glyphicon glyphicon-star" aria-hidden="true"></span> AKCIJA
-								</button>
+                                
 								<span uib-rating ng-model="ocena" max="max" read-only="isReadonly"
 									on-hover="hoveringOver(value)" on-leave="overStar = null"
 									titles="['one','two','three']" aria-labelledby="default-rating"></span>
@@ -68,7 +67,13 @@
 									ng-show="overStar && !isReadonly">{{percent}}%</span>
 									<p class="pull-right">{{product.brojOcenjivnja}} reviews</p>
 									<button type="button" class="btn btn-primary btn-xs"
-									ng-click="applyOcena(product,ocena)" ng-disabled="isReadonly">Oceni</button>
+									ng-click="applyOcena(product,ocena)" ng-if="getCurrentUserRole()=='korisnik'" ng-disabled="isReadonly">Oceni</button>
+									<button type="button" ng-show="product.akcijaZaPrikaz" class="btn btn-danger btn-xs">
+  								<span class="glyphicon glyphicon-star" aria-hidden="true"></span> AKCIJA
+								</button>
+									<button type="button"  class="btn btn-warning btn-xs" ng-if="getCurrentUserRole()=='korisnik'" ng-click="dodajZelju(product)">
+  								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Zelja
+								</button>
                                 </p>
                                 
                             </div>

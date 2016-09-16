@@ -76,9 +76,9 @@ public class ProizvodiService {
 		Date date = new Date();
 		for(int i=0;i< trenutna.size();i++){
 			if(trenutna.get(i).getAkcija()==true){
-				System.out.println("ovoo je akcija");
+				System.out.println(trenutna.get(i).getDatumPocetka() + " "+ trenutna.get(i).getDatumKraja());
 				if (  date.after(trenutna.get(i).getDatumPocetka()) && date.before(trenutna.get(i).getDatumKraja())){
-					System.out.println("usao u datum");
+					
 					trenutna.get(i).setCenaBezAkcije(trenutna.get(i).getCena());
 					trenutna.get(i).setCena(trenutna.get(i).getAkcijskaCena());
 					trenutna.get(i).setCenaBezAkcije(trenutna.get(i).getCenaBezAkcije());
@@ -92,6 +92,25 @@ public class ProizvodiService {
 		ctx.setAttribute("proizvodi", trenutna);
 		proizvodi.serijalizuj(trenutna);
 		return getProducts();
+		
+	}
+	@GET
+	@Path("/getProProdavnica/{shop}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public ArrayList<Proizvod> getProProizvodi(@PathParam("shop") String shop){
+		
+		List<Proizvod> proizvodi = getProducts();
+		ArrayList<Proizvod> zaPrikaz = new ArrayList<Proizvod>();
+		for(int i = 0;i<proizvodi.size();i++){
+		
+			if(proizvodi.get(i).getProdavnica().getNaziv().equals(shop)){
+		
+				zaPrikaz.add(proizvodi.get(i));
+			}
+		}
+		return zaPrikaz;
+		
 		
 	}
 	@GET
@@ -210,8 +229,13 @@ public class ProizvodiService {
 		
 	};
 	
-	
-	
+	@GET
+	@Path("/all")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public List<Proizvod> alProizvod(){
+		return getProducts();
+	}
 	@PUT
 	@Path("/editProizvod")
 	@Produces(MediaType.APPLICATION_JSON)

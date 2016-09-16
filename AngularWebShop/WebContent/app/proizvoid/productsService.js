@@ -4,9 +4,9 @@
         .service('productsService', ['$http','$state', function ($http, $state) {
             //metode servisa
             return {
-                getAll: function () {
+                getAll: function (shop) {
                     
-                  return $http.get('/AngularWebShop/rest/product/getProizvod');
+                  return $http.get('/AngularWebShop/rest/product/getProProdavnica/'+shop);
                 },
                 getPro: function (num) {
                     
@@ -40,6 +40,9 @@
                 },
                 postAkciju: function(product){
                 	return $http.post('/AngularWebShop/rest/product/akcija',product)
+                },
+                getAllAdmin: function(){
+                	return $http.get('/AngularWebShop/rest/product/getProizvod')
                 }
             }
 

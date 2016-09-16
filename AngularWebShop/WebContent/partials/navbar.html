@@ -1,14 +1,14 @@
 <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
   <a class="navbar-brand" href="#">Navbar</a>
   <ul class="nav navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+   <li class="nav-item">
+      <a class="nav-link" ng-if="getCurrentUserRole()=='admin'" ui-sref="allUser()">AllUser</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" ng-if="getCurrentUserRole()=='admin'" ui-sref="zalba()">Zalbe</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" ng-if="getCurrentUserRole()=='admin'" ui-sref="allProducts()">All products</a>
+      <a class="nav-link" ng-if="getCurrentUserRole()=='admin'|| getCurrentUserRole()=='prodavac'" ui-sref="allProducts()">All products</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" ng-if="getCurrentUserRole()=='admin'" ui-sref="allShops()">All shops</a>
@@ -20,13 +20,16 @@
       <a class="nav-link" ng-if="getCurrentUserRole()=='admin'" ui-sref="allKategorija()">All kategorije</a>
     </li>
      <li class="nav-item">
-      <a class="nav-link" ui-sref="akcijaProducts()">Akcija</a>
+      <a class="nav-link" ng-if="getCurrentUserRole()=='prodavac'" ui-sref="akcijaProducts()">Akcija</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" ui-sref="chooseShop()">Shopping Cart</a>
     </li>
      <li class="nav-item">
       <a class="nav-link" ng-if="getCurrentUserRole()=='admin'" ui-sref="allRecenzija()">All recenzije</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link"  ui-sref="zelje()" ng-if="getCurrentUserRole()=='korisnik'">Zelje</a>
     </li>
       <li class="nav-item">
       <a class="nav-link" ng-click="logout()">Log out</a>

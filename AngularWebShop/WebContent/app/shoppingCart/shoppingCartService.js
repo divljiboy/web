@@ -49,6 +49,12 @@
                 },
                 postOdbaci: function(zalba){
                 	return $http.post('/AngularWebShop/rest/zalba/postOdbaci',zalba)
+                },
+                postZelju: function(product,user){
+                	return $http.post('/AngularWebShop/rest/zelja/addZelja/'+user,product)
+                },
+                getZelje: function(user){
+                	return $http.get('/AngularWebShop/rest/zelja/getZelja/' + user )
                 }
                 
                 

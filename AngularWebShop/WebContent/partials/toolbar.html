@@ -1,5 +1,4 @@
-
-<div ng-if="getCurrentUserRole()=='admin'"  class="form-group">
+<div ng-if="getCurrentUserRole()=='admin' || getCurrentUserRole()=='prodavac'"  class="form-group">
   <label class="col-md-4 control-label" for="singlebutton">Single Button</label>
   <div class="col-md-4">
     <button ng-click ="dodajSlog()" id="singlebutton1" name="singlebutton1" class="btn btn-primary">Add</button>

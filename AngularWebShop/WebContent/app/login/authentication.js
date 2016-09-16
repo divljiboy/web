@@ -21,7 +21,12 @@
                 	
                     if (response.status === "ok") {
                         // korisnicko ime, token i rola (ako postoji) cuvaju se u lokalnom skladištu
-                        var currentUser = { username: username,role:response.role }                       
+                    	if(response.role =="prodavac"){
+                    		console.log(response)
+                        var currentUser = { username: username,role:response.role,prodavnica:response.prodavnica }    }
+                    	else{
+                    		var currentUser = { username: username,role:response.role } 
+                    	}
                        // if(tokenPayload.role){
                            // currentUser.role = tokenPayload.role;
                       //  }

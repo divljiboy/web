@@ -42,7 +42,8 @@
             if (!AuthenticationService.getCurrentUser()){
               return undefined;
             }
-            else{
+            else{ 
+            	
               return AuthenticationService.getCurrentUser().role;
             }
         }

@@ -11,6 +11,7 @@ public class User implements Serializable{
 	
 	private String role;
 	
+	private String prodavnica;
 	private int sifra;
 	
 	
@@ -43,6 +44,12 @@ public class User implements Serializable{
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public String getProdavnica() {
+		return prodavnica;
+	}
+	public void setProdavnica(String prodavnica) {
+		this.prodavnica = prodavnica;
 	}
 	
 }

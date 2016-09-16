@@ -4,7 +4,7 @@
     	.controller('chooseShopsController', ['$window','$scope', '$state', '$rootScope', 'shopService','productsService','shoppingCartService', '$stateParams','$localStorage', function ($window,$scope, $state, $rootScope, shopService,productsService,shoppingCartService, $stateParams,$localStorage) {
     		$scope.trueSearch = false
     		var podaci=function(){ 
-    			productsService.getAll().then(function(response) {	
+    			productsService.getAllAdmin().then(function(response) {	
     				console.log(response.data)
     			$scope.allProducts = response.data
     			
@@ -36,12 +36,12 @@
     		
     		podaci();
     		
-    		  $scope.applyOcena = function(product,ocena){
+    		$scope.applyOcena = function(product,ocena){
     			  
-    			  productsService.postOcenu(product,ocena).then(function(response){
+    		 productsService.postOcenu(product,ocena).then(function(response){
     				  podaci()
     			  })
-    		  }
+    		}
     		  
     		  $scope.open2 = function() {
 				    $scope.popup2.opened = true;
@@ -62,7 +62,11 @@
 			    $scope.percent = 100 * (value / $scope.max);
 			  };
 			  
-			 
+			  $scope.dodajZelju = function(product){
+				  
+				  shoppingCartService.postZelju(product,$localStorage.currentUser.username)
+			  }
+			  
 			  
 			  $scope.ratingStates = [
 			    {stateOn: 'glyphicon-ok-sign', stateOff: 'glyphicon-ok-circle'},

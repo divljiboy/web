@@ -12,27 +12,33 @@
 							'$stateParams',
 							'uiGridConstants',
 							'shopService',
+							'$localStorage',
 							function($scope, $state, $rootScope,
 									productsService, $stateParams,
-									uiGridConstants, shopService) {
+									uiGridConstants, shopService,$localStorage) {
 
 								$scope.selektovaniSlog = {};
 
 								var podaci = function() {
-									console.log("Pozvao funckioju init()");
+									
+									console.log($localStorage.currentUser.prodavnica)
+									if($localStorage.currentUser.role=="prodavac"){
 									productsService
-											.getAll()
+											.getAll($localStorage.currentUser.prodavnica)
 											.then(
 													function(response) {
-														
+														console.log(response)
 														$scope.gridOptions.data = response.data;
-														$scope.podaci = response.data;
-
-													},
-													function(response) {
+														$scope.podaci = response.data
 
 														
-													});
+													})}else{
+														productsService.getAllAdmin().then(function(response){{
+															console.log(response.data)
+															$scope.gridOptions.data = response.data;
+															$scope.podaci = response.data
+														}})
+													}
 
 								};
 

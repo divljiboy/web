@@ -22,9 +22,11 @@
         <td>{{ recen.ocena }}</td>
         <td>{{ recen.korisnik }}</td>
         <td>{{ recen.ocenaKomentara }}</td>
-        <td><button ng-if="currentUser === recen.korisnik" ng-Click ="obrisiSlog(recen.sifra)" class="btn btn-danger btn-xs">Obrisi</button><td>
-      	<td><button ng-if="currentUser === recen.korisnik" ng-Click="edit(recen)"class="btn btn-primary btn-xs" ng-disabled="selectovanEdit">Edit</button><td>
-		<td><button ng-click="oceniKomentar(recen)" class="btn btn-info btn-xs">Oceni komentar</button></td>
+        <td><button ng-if="currentUser === recen.korisnik || getCurrentUserRole()=='admin'" ng-Click ="obrisiSlog(recen.sifra)" class="btn btn-danger btn-xs">Obrisi</button><td>
+        
+        
+      	<td><button ng-if="currentUser === recen.korisnik" ng-Click="edit(recen)"class="btn btn-primary btn-xs">Edit</button><td>
+		<td><button ng-click="oceniKomentar(recen)" ng-if="getCurrentUserRole()=='korisnik'"  class="btn btn-info btn-xs">Oceni komentar</button></td>
 		<td>
       </tr>
     </tbody>
@@ -34,7 +36,7 @@
 
 <div class="form-group">
 <label class="col-md-4 control-label" for="selectbasic"></label>
-<button  ng-click="show()" class="btn btn-primary ">Add comment</button>
+<button  ng-click="show()" class="btn btn-primary " ng-if="getCurrentUserRole()=='korisnik'">Add comment</button>
 </div>
 
 		

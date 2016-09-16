@@ -1,0 +1,70 @@
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Akcija</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Cena</label>  
+  <div class="col-md-4">
+  <input id="textinput" ng-model="akcijskaCena" name="textinput" ng-required="true" type="text" placeholder="Nova cena" class="form-control input-md"> 
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="selectbasic">Izaberi proizvod</label>
+  <div class="col-md-4">
+    <select ng-model="currentState"  id="selectbasic" name="selectbasic" class="form-control"
+					ng-model="productSelected" ng-change="changedValue(currentState)"
+					data-ng-options="product.naziv for product in proizvod"
+					class="form-control" >
+    
+    </select>
+  </div>
+</div>
+<div class="form-group">
+	
+	<label class="col-md-4 control-label" for="selectbasic">Izaberi datum pocetka</label>
+    <div class="row">
+      <div class="col-md-6">
+        <p class="input-group">
+          <input type="text" class="form-control input-md" uib-datepicker-popup="{{format}}" ng-model="dtPocetak" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+</div>
+ </div>
+ </div>
+<div class="form-group">
+	
+	<label class="col-md-4 control-label" for="selectbasic">Izaberi datum kraja</label>
+    <div class="row">
+      <div class="col-md-6">
+        <p class="input-group">
+          <input type="text" class="form-control input-md" uib-datepicker-popup="{{format}}" ng-model="dtKraj" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+</div>
+</div>
+</div>
+<!-- Button (Double) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="button1id"></label>
+  <div class="col-md-8">
+    <button id="button1id" ng-disabled="currentState === 'Not ready'" name="button1id" ng-click="ok()" class="btn btn-success">Ok</button>
+    <button id="button2id" name="button2id" class="btn btn-danger">Cancel</button>
+  </div>
+</div>
+<div class="form-group" ng-show="greska()">
+<div class="alert alert-danger">
+  <strong>Danger!</strong> Greska pocetak posle kraja
+</div>
+</div>
+
+</fieldset>
+</form>

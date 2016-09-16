@@ -98,6 +98,25 @@
                          
                     }
                 })
+                 .state('zelje',
+                {
+                    url: '/zelje',
+                    views:
+                    {
+  
+                        'navbar': {
+                            templateUrl: 'partials/navbar.html',
+                            controller : 'navbarController'
+                            
+                         },
+                         'content':{
+                        	 templateUrl: 'app/shoppingCart/zelja.html',
+                        	 controller: 'zeljeController' 
+                        	 
+                         }
+                         
+                    }
+                })
    
                 }]);
 })(angular);

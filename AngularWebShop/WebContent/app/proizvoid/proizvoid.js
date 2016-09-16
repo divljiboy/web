@@ -3,6 +3,21 @@
 
     angular.module('webShop').config(['$stateProvider', function ($stateProvider) {
             $stateProvider
+            .state('akcijaProducts',{
+           	   url:'/akcijaProducts',
+           	  	views:
+           	  	{
+           	  		'navbar':{
+           	  			templateUrl: 'partials/navbar.html',
+                         controller : 'navbarController'
+           	  		},
+           	  		'content':{
+           	  			templateUrl: 'app/proizvoid/ackijaProduct.html',
+           	  			controller: 'akcijaProductController'
+           	  		}
+           	  		
+           	  	}
+              })
             .state('allProducts',
                 {
                     url: '/allProducts',
@@ -54,21 +69,7 @@
                   	  		
                   	  	}
                      })
-                     .state('akcijaProducts',{
-                  	   url:'/akcijaProducts',
-                  	  	views:
-                  	  	{
-                  	  		'navbar':{
-                  	  			templateUrl: 'partials/navbar.html',
-                                controller : 'navbarController'
-                  	  		},
-                  	  		'content':{
-                  	  			templateUrl: 'app/proizvoid/ackijaProduct.html',
-                  	  			controller: 'akcijaProductController'
-                  	  		}
-                  	  		
-                  	  	}
-                     })
+                     
    
                 }]);
 })(angular);

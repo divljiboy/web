@@ -1,5 +1,6 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -66,7 +67,20 @@ public class ShopService {
 		return getShops();
 		
 	}
-	
+	@GET
+	@Path("/getShopByName/{shop}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Prodavnica getShop(@PathParam("shop") String shop){
+		List<Prodavnica> trenutna = getShops();
+		for(int i =0;i<trenutna.size();i++){
+			if(trenutna.get(i).getNaziv().equals(shop))
+				return trenutna.get(i);
+		}
+		return null;
+		
+		
+	}
 	@POST
 	@Path("/deleteShop/{id}")
 	@Produces(MediaType.APPLICATION_JSON)

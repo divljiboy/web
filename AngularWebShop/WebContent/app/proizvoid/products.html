@@ -1,5 +1,12 @@
-<div ng-if="getCurrentUserRole()=='admin'" class="table-responsive">
- <div   ng-include src="'partials/toolbar.html'"></div>
+<div ng-if="getCurrentUserRole()=='admin' || getCurrentUserRole()=='prodavac'" class="table-responsive">
+<div  class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton">Single Button</label>
+  <div class="col-md-4" ng-if="getCurrentUserRole()=='prodavac'">
+    <button  ng-click ="dodajSlog()" id="singlebutton1" name="singlebutton1" class="btn btn-primary">Add</button>
+  	<button ng-click ="izmeniSlog()" id="singlebutton2" name="singlebutton2" class="btn btn-primary">Edit</button>
+ 	<button ng-click ="obrisiSlog()" id="singlebutton3" name="singlebutton3" class="btn btn-primary">Delete</button>
+  </div>
+</div>
 
 <div class="container">
   <h2>Products Table</h2>

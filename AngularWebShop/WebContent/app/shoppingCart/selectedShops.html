@@ -39,19 +39,33 @@
 						
 							  <label class="col-md-4 control-label" for="singlebutton"></label>
 							  <div class="col-md-4">
-							    <button id="singlebutton" ng-click="addToShoppingCart(product,kolicina)" name="singlebutton" class="btn btn-success">Kupi</button>
+							    <button id="singlebutton" ng-click="addToShoppingCart(product,kolicina)" name="singlebutton" class="btn btn-success btn-sm">Kupi</button>
 							  </div>
 							</div>
 											
+                           				
                             <div class="ratings">
-                                <p class="pull-right">15 reviews</p>
+                                <p class="pull-right">{{product.ocenaKomentara}} ocena</p>
+                               
                                 <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
+                               
+								<span uib-rating ng-model="ocena" max="max" read-only="isReadonly"
+									on-hover="hoveringOver(value)" on-leave="overStar = null"
+									titles="['one','two','three']" aria-labelledby="default-rating"></span>
+								<span class="label"
+									ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}"
+									ng-show="overStar && !isReadonly">{{percent}}%</span>
+									<p class="pull-right">{{product.brojOcenjivnja}} reviews</p>
+									<button type="button" class="btn btn-primary btn-xs"
+									ng-click="applyOcena(product,ocena)" ng-disabled="isReadonly">Oceni</button>
+									<button type="button" ng-show="product.akcijaZaPrikaz" class="btn btn-danger btn-xs">
+  								<span class="glyphicon glyphicon-star" aria-hidden="true"></span> AKCIJA
+								</button>
+									<button type="button"  class="btn btn-warning btn-xs" ng-click="dodajZelju(product)">
+  								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Zelja
+								</button>
                                 </p>
+                                
                             </div>
                         </div>
                     </div>

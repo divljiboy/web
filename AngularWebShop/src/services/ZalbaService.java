@@ -58,6 +58,7 @@ public class ZalbaService {
 		zalba.serijalizuj(trenutna);
 		return (JSONObject) obj.put("status", "ok");
 	}
+	
 	@POST
 	@Path("/postOdbaci")
 	@Produces(MediaType.APPLICATION_JSON)

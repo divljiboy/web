@@ -11,13 +11,15 @@
 					'$stateParams',
 					'shopService',
 					'kategorijaService',
+					'$localStorage',
 					function($window, $scope, $state, $rootScope,
-							productsService, $stateParams, shopService,kategorijaService) {
-
+							productsService, $stateParams, shopService,kategorijaService,$localStorage) {
+						$scope.product = {}
 						var podaci = function() {
-
-							shopService.getAll().then(function(response) {
-								$scope.shops = response.data;
+							console.log($localStorage.currentUser.prodavnica)
+							shopService.getShopByName($localStorage.currentUser.prodavnica).then(function(response) {
+								console.log(response.data)
+								$scope.product.prodavnica = response.data
 								
 
 							});

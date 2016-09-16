@@ -24,6 +24,9 @@
                 
                   return  $http.post('/AngularWebShop/rest/shop/deleteShop/'+bla);
                    
+                },
+                getShopByName: function(shop){
+                	return $http.get('/AngularWebShop/rest/shop/getShopByName/'+shop)
                 }
             }
 
