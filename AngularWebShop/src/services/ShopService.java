@@ -1,6 +1,5 @@
 package services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -17,9 +16,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
-import beans.ShopSer;
 import beans.Prodavnica;
-import beans.Proizvod;
+import beans.ShopSer;
 
 
 @Path("/shop")

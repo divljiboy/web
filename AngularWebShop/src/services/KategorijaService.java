@@ -15,10 +15,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.sun.xml.internal.ws.client.sei.ResponseBuilder;
-
-import beans.Dostavljac;
-import beans.DostavljacSer;
 import beans.Kategorija;
 import beans.KategorijaSer;
 

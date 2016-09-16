@@ -16,14 +16,13 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
-import beans.Dostavljac;
+import org.json.simple.JSONObject;
+
 import beans.IstorijaKupovine;
 import beans.IstorijaKupovineSer;
 import beans.Kupovina;
 import beans.KupovinaSer;
-import beans.Prodavnica;
 import beans.Proizvod;
- import org.json.simple.JSONObject;
 
 @Path("/shoppingCart")
 public class ShoppingCartService {

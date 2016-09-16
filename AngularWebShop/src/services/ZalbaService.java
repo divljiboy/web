@@ -12,17 +12,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.ResponseBuilder;
 
 import org.json.simple.JSONObject;
 
 import beans.IstorijaKupovine;
 import beans.IstorijaKupovineSer;
-import beans.KupovinaSer;
-import beans.Prodavnica;
-import beans.Recenzija;
-import beans.ShopSer;
 import beans.Zalba;
 import beans.ZalbaSer;
 

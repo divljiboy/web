@@ -19,7 +19,6 @@ import javax.ws.rs.core.Response;
 
 import org.json.simple.JSONObject;
 
-import beans.ProductToAdd;
 import beans.Proizvod;
 import beans.ProizvodSer;
 

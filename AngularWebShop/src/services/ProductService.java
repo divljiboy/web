@@ -14,10 +14,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.json.simple.JSONObject;
-
-import com.sun.xml.internal.ws.client.sei.ResponseBuilder;
-
 import beans.Product;
 import beans.ProductToAdd;
 import beans.Products;
